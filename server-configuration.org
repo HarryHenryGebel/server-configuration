@@ -61,7 +61,7 @@ thing. These sources are also know as reference clocks, and are the
 ultimate source of time not just for the NTP network, but for most
 time used all over the world.
 
-Stratum 1 servers pull their time directly from a reference clock.
+Stratum 1 servers synchronize their time directly from a reference clock.
 
 Stratum 2 servers synchronize their time by tracking several stratum 1
 servers. Several stratum 1 sources are necessary to correct for

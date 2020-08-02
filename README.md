@@ -1,58 +1,58 @@
 
 # Table of Contents
 
-1.  [Acquiring a domain name](#org839aeef)
-    1.  [Registering your own domain name](#orgefb0541)
-    2.  [Using a free domain name service](#org7c55f32)
-2.  [Acquiring a Debian server](#orgd71d66f)
-    1.  [Digital Ocean](#org5842e31)
-    2.  [Google Compute Cloud](#org5f2724a)
-3.  [Getting started](#org0d9ed0d)
-    1.  [Etckeeper](#orgfc4d879)
-    2.  [SSH server setup](#org07ca04d)
-    3.  [NTP server setup](#org426c59f)
-        1.  [NTP service - sync time only](#orgf3867a0)
-        2.  [NTP service - join the pool of public NTP servers](#org2a115a0)
-        3.  [Checking the status of the NTP service](#org0e41f7e)
-    4.  [Unattended upgrades setup](#orgbeb7b51)
-4.  [Email server](#org23c1489)
-    1.  [Full email service](#org5345e67)
-        1.  [Implement encrypted passwords in Dovecot / Postfix](#orgd2ffb61)
-    2.  [Local/forwarded email](#org023ff41)
+1.  [Acquiring a domain name](#org91cb3d2)
+    1.  [Registering your own domain name](#orgf684c57)
+    2.  [Using a free domain name service](#orgab6d3a7)
+2.  [Acquiring a Debian server](#org1a7c236)
+    1.  [Digital Ocean](#orgd806625)
+    2.  [Google Compute Cloud](#orgf585ce9)
+3.  [Getting started](#org90727a3)
+    1.  [Etckeeper](#org53b5343)
+    2.  [SSH server setup](#orgd96dc28)
+    3.  [NTP server setup](#org17905fe)
+        1.  [NTP service - sync time only](#orge281725)
+        2.  [NTP service - join the pool of public NTP servers](#org9b4827a)
+        3.  [Checking the status of the NTP service](#orgcfc873c)
+    4.  [Unattended upgrades setup](#orge4a202f)
+4.  [Email server](#orgb6a31b8)
+    1.  [Full email service](#orgf279fb7)
+        1.  [Implement encrypted passwords in Dovecot / Postfix](#orgddb94b1)
+    2.  [Local/forwarded email](#org17ac65e)
 
 
 
-<a id="org839aeef"></a>
+<a id="org91cb3d2"></a>
 
 # Acquiring a domain name
 
 
-<a id="orgefb0541"></a>
+<a id="orgf684c57"></a>
 
 ## Registering your own domain name
 
 
-<a id="org7c55f32"></a>
+<a id="orgab6d3a7"></a>
 
 ## Using a free domain name service
 
 
-<a id="orgd71d66f"></a>
+<a id="org1a7c236"></a>
 
 # Acquiring a Debian server
 
 
-<a id="org5842e31"></a>
+<a id="orgd806625"></a>
 
 ## Digital Ocean
 
 
-<a id="org5f2724a"></a>
+<a id="orgf585ce9"></a>
 
 ## Google Compute Cloud
 
 
-<a id="org0d9ed0d"></a>
+<a id="org90727a3"></a>
 
 # Getting started
 
@@ -60,7 +60,7 @@ These steps are necessary to get from a non-existing server to one
 that can be safely logged into and left running.
 
 
-<a id="orgfc4d879"></a>
+<a id="org53b5343"></a>
 
 ## Etckeeper
 
@@ -68,12 +68,12 @@ Etckeeper is the first package to install, it will create a git
 repository that will control all changes made in the /etc directory.
 
 
-<a id="org07ca04d"></a>
+<a id="orgd96dc28"></a>
 
 ## SSH server setup
 
 
-<a id="org426c59f"></a>
+<a id="org17905fe"></a>
 
 ## NTP server setup
 
@@ -91,7 +91,7 @@ physically located in different time zones that the administrator or
 other managed servers. UTC is the standard time of the internet.
 
 
-<a id="orgf3867a0"></a>
+<a id="orge281725"></a>
 
 ### NTP service - sync time only
 
@@ -103,7 +103,7 @@ source, as if the source is lost the default configuration can usually
 correct for clock drift until the source becomes available again.
 
 
-<a id="org2a115a0"></a>
+<a id="org9b4827a"></a>
 
 ### NTP service - join the pool of public NTP servers
 
@@ -117,7 +117,7 @@ thing. These sources are also know as reference clocks, and are the
 ultimate source of time not just for the NTP network, but for most
 time used all over the world.
 
-Stratum 1 servers pull their time directly from a reference clock.
+Stratum 1 servers synchronize their time directly from a reference clock.
 
 Stratum 2 servers synchronize their time by tracking several stratum 1
 servers. Several stratum 1 sources are necessary to correct for
@@ -141,12 +141,12 @@ Additional stratum proceed along the same plan up until
 stratum 14. Pool servers should be located at stratum 3 or 4.
 
 
-<a id="org0e41f7e"></a>
+<a id="orgcfc873c"></a>
 
 ### Checking the status of the NTP service
 
 
-<a id="orgbeb7b51"></a>
+<a id="orge4a202f"></a>
 
 ## Unattended upgrades setup
 
@@ -154,12 +154,12 @@ You may wish to delay this until you have email set up, but in any
 case should not delay longer than necessary.
 
 
-<a id="org23c1489"></a>
+<a id="orgb6a31b8"></a>
 
 # Email server
 
 
-<a id="org5345e67"></a>
+<a id="orgf279fb7"></a>
 
 ## Full email service
 
@@ -169,12 +169,12 @@ remote client such as Thunderbird or K-9 Mail, receiving emails sent
 from other domains, and providing IMAP services to remote clients.
 
 
-<a id="orgd2ffb61"></a>
+<a id="orgddb94b1"></a>
 
 ### TODO Implement encrypted passwords in Dovecot / Postfix
 
 
-<a id="org023ff41"></a>
+<a id="org17ac65e"></a>
 
 ## TODO Local/forwarded email
 
