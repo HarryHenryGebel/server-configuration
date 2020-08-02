@@ -29,14 +29,44 @@ repository that will control all changes made in the /etc directory.
 
 ** NTP server setup
 Many internet services depend on the clocks on both sides of a
-connection to be set accurately. The NTP service allows this to be
-done with a high degree of accuracy with minimal configuration. If a
-server exists on a permanent, publicly accessible IP address, it can
-optionally be set up to give back to the internet time community by
-becoming part of the pool of public time servers.
+connection to be set accurately. The NTP (Network Time Protocol)
+service allows this to be done with a high degree of accuracy with
+minimal configuration. If a server exists on a permanent, publicly
+accessible IP address, it can optionally be set up to give back to the
+internet time community by becoming part of the pool of public time
+servers.
+
+Servers should generally be left using UTC as their local timezone. In
+this way, logs can easily be compared even though the servers are
+physically located in different time zones that the administrator or
+other managed servers. UTC is the standard time of the internet.
 
 *** NTP service - sync time only
+Debian comes configured to automatically keep it's clock synced to the
+current time using the existing NTP network. No additional
+configuration is necessary.
+
 *** NTP service - join the pool of public NTP servers
+The NTP network is organized into a series of layers called
+stratum. Stratum 0 are the hyper accurate time sources that are the
+source for the time provided by all other stratum. Sources in stratum
+0 include the various satellite positioning networks, radio clocks
+such as those provide by the NIST [fn:1: The United States National
+Institute of Standards and Technology], or atomic clocks that may be
+available if the server is located at a facility that has such a
+thing. These sources are also know as reference clocks, and are the
+ultimate source of time not just for the NTP network, but for most
+time used all over the world.
+
+Stratum 1 servers pull their time directly from a reference clock.
+
+Stratum 2 servers synchronize their time by tracking several stratum 1
+servers. Several stratum 1 sources are necessary to correct for
+stratum 1 servers that may be inoperative, malfunctioning, or
+temporarily out of sync.
+
+Stratum 3 servers pull their
+
 
 *** Checking the status of the NTP service
 
