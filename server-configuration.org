@@ -11,13 +11,16 @@ from scratch, including the reasons for certain decisions. It is
 intended primarily for the author's own benefit, both as a writing
 exercise and as a reference, but is made available on a public
 repository in the hope that others may find it useful, or at least
-educational or exasperating. It assumes the user knows how to use ssh,
+educational or exasperating. It assumes the user knows how to use ssh
 and has already generated a ssh key pair for logins[fn::Users of
 Github may have already set up a ssh key pair, and may safely use the
 same key pair they use to interact with their github repositories to
 log into any servers they create], and that the user already possesses
-at least a rudimentary knowledge of working from the command
-line. Patches or suggestions for improvement, especially regarding
+at least a rudimentary knowledge of working from the command line and
+has their local system set up with a Unix compatible shell if it does
+not come with one (Windows[fn::Unix compatible shells for Windows are
+included with Gitbash, the Windows Subsystem for Linux, Cygwin, and
+MinGW]). Patches or suggestions for improvement, especially regarding
 security or best practices, are welcome at all times, as are differing
 opinions. This document is released into the public domain where
 legally permissible, and all rights are permanently and irrevocably
