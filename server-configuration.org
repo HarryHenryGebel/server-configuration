@@ -18,13 +18,17 @@ same key pair they use to interact with their github repositories to
 log into any servers they create], and that the user already possesses
 at least a rudimentary knowledge of working from the command line and
 has their local system set up with a Unix compatible shell if it does
-not come with one (Windows[fn::Unix compatible shells for Windows are
-included with Gitbash, the Windows Subsystem for Linux, Cygwin, and
-MinGW]). Patches or suggestions for improvement, especially regarding
-security or best practices, are welcome at all times, as are differing
-opinions. This document is released into the public domain where
-legally permissible, and all rights are permanently and irrevocably
-waived, to the extent permitted by law.
+not come with one (Windows[fn::Some examples of Windows projects that
+include Unix compatible shells are Git for Windows (Gitbash), the
+Windows Subsystem for Linux, Cygwin, and MinGW. There are other
+options as well, these are the ones the author is aware of. PuTTY is
+also an option to use ssh without having a Unix compatible shell
+installed on the local system.]). Patches or suggestions for
+improvement, especially regarding security or best practices, are
+welcome at all times, as are differing opinions. This document is
+released into the public domain where legally permissible, and all
+rights are permanently and irrevocably waived, to the extent permitted
+by law.
 
 * Acquiring a domain name
 
