@@ -34,8 +34,12 @@ is never sure. --- Segal's law
 #+END_QUOTE
 
 Many internet services depend on the clocks on both sides of a
-connection to be set accurately. The NTP [fn::Network Time Protocol]
-service allows this to be done with a high degree of accuracy with
+connection to being accurate. The NTP [fn::Network Time Protocol]
+service allows clocks to be synchronized to UTC[fn::Coordinated
+Universal Time. UTC is the time zone of London, United Kingdom, but
+does not have daylight savings time. It is essentially similar to
+Greenwich Mean Time, but in GMT the day starts at noon, while in UTC
+the day starts at midnight] with a high degree of accuracy with
 minimal configuration. If a server exists on a permanent, publicly
 accessible IP address, it can optionally be set up to give back to the
 internet time community by becoming part of the pool of public time
@@ -43,16 +47,18 @@ servers.
 
 Servers should generally be left using UTC as their local timezone. In
 this way, logs can easily be compared even though the servers are
-physically located in different time zones that the administrator or
-other managed servers. UTC is the standard time of the internet.
+physically located in different time zones than the administrator or
+other managed servers. UTC is the standard time zone of the internet.
 
 *** NTP service - sync time only
 Debian comes configured to automatically keep it's clock synced to the
 current time using the existing NTP network. No additional
-configuration is necessary. Systems that are configured only as a
-client of the NTP network can safely be operated with a single time
-source, as if the source is lost the default configuration can usually
-correct for clock drift sufficiently until the source becomes available again.
+configuration is necessary. Systems which do not function as pool
+servers do not require their time to be as accurate as those that do,
+therefore systems that are configured only as a client of the NTP
+network can safely be operated with a single time source, as if the
+source is lost the default configuration can usually correct for clock
+drift sufficiently until the source becomes available again.
 
 *** NTP service - join the pool of public NTP servers
 The NTP network is organized into a series of layers called

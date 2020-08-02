@@ -1,58 +1,58 @@
 
 # Table of Contents
 
-1.  [Acquiring a domain name](#orge8bda06)
-    1.  [Registering your own domain name](#org0960d94)
-    2.  [Using a free domain name service](#org371034a)
-2.  [Acquiring a Debian server](#org7918841)
-    1.  [Digital Ocean](#orge422c43)
-    2.  [Google Compute Cloud](#orgf453516)
-3.  [Getting started](#org0d7cb76)
-    1.  [Etckeeper](#orgec6a820)
-    2.  [SSH server setup](#org194fe38)
-    3.  [NTP server setup](#org12d6e21)
-        1.  [NTP service - sync time only](#org4d00281)
-        2.  [NTP service - join the pool of public NTP servers](#orgf7abf4d)
-        3.  [Checking the status of the NTP service](#org75a5eb5)
-    4.  [Unattended upgrades setup](#orge8122f7)
-4.  [Email server](#org25ed8e7)
-    1.  [Full email service](#org0440baa)
-        1.  [Implement encrypted passwords in Dovecot / Postfix](#orgbb8d251)
-    2.  [Local/forwarded email](#org62a01e9)
+1.  [Acquiring a domain name](#orgdb66936)
+    1.  [Registering your own domain name](#orgeb7b512)
+    2.  [Using a free domain name service](#orgdeebeba)
+2.  [Acquiring a Debian server](#org7fdac50)
+    1.  [Digital Ocean](#org60daf51)
+    2.  [Google Compute Cloud](#org3c38372)
+3.  [Getting started](#orgbf4ccd2)
+    1.  [Etckeeper](#org3ad3e0b)
+    2.  [SSH server setup](#org9697487)
+    3.  [NTP server setup](#org29d4815)
+        1.  [NTP service - sync time only](#orgc946278)
+        2.  [NTP service - join the pool of public NTP servers](#org385ae74)
+        3.  [Checking the status of the NTP service](#org4881905)
+    4.  [Unattended upgrades setup](#org562cf70)
+4.  [Email server](#org1b7e8e7)
+    1.  [Full email service](#org6f5052f)
+        1.  [Implement encrypted passwords in Dovecot / Postfix](#org14bf65b)
+    2.  [Local/forwarded email](#org03b4c43)
 
 
 
-<a id="orge8bda06"></a>
+<a id="orgdb66936"></a>
 
 # Acquiring a domain name
 
 
-<a id="org0960d94"></a>
+<a id="orgeb7b512"></a>
 
 ## Registering your own domain name
 
 
-<a id="org371034a"></a>
+<a id="orgdeebeba"></a>
 
 ## Using a free domain name service
 
 
-<a id="org7918841"></a>
+<a id="org7fdac50"></a>
 
 # Acquiring a Debian server
 
 
-<a id="orge422c43"></a>
+<a id="org60daf51"></a>
 
 ## Digital Ocean
 
 
-<a id="orgf453516"></a>
+<a id="org3c38372"></a>
 
 ## Google Compute Cloud
 
 
-<a id="org0d7cb76"></a>
+<a id="orgbf4ccd2"></a>
 
 # Getting started
 
@@ -60,7 +60,7 @@ These steps are necessary to get from a fresh, unconfigured server to one
 that can be securely logged into and left running.
 
 
-<a id="orgec6a820"></a>
+<a id="org3ad3e0b"></a>
 
 ## Etckeeper
 
@@ -68,12 +68,12 @@ Etckeeper is the first package to install, it will create a git
 repository that will control all changes made in the /etc directory.
 
 
-<a id="org194fe38"></a>
+<a id="org9697487"></a>
 
 ## SSH server setup
 
 
-<a id="org12d6e21"></a>
+<a id="org29d4815"></a>
 
 ## NTP server setup
 
@@ -81,8 +81,8 @@ repository that will control all changes made in the /etc directory.
 > is never sure. &#x2014; Segal's law
 
 Many internet services depend on the clocks on both sides of a
-connection to be set accurately. The NTP <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
-service allows this to be done with a high degree of accuracy with
+connection to being accurate. The NTP <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+service allows clocks to be synchronized to UTC<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> with a high degree of accuracy with
 minimal configuration. If a server exists on a permanent, publicly
 accessible IP address, it can optionally be set up to give back to the
 internet time community by becoming part of the pool of public time
@@ -90,23 +90,25 @@ servers.
 
 Servers should generally be left using UTC as their local timezone. In
 this way, logs can easily be compared even though the servers are
-physically located in different time zones that the administrator or
-other managed servers. UTC is the standard time of the internet.
+physically located in different time zones than the administrator or
+other managed servers. UTC is the standard time zone of the internet.
 
 
-<a id="org4d00281"></a>
+<a id="orgc946278"></a>
 
 ### NTP service - sync time only
 
 Debian comes configured to automatically keep it's clock synced to the
 current time using the existing NTP network. No additional
-configuration is necessary. Systems that are configured only as a
-client of the NTP network can safely be operated with a single time
-source, as if the source is lost the default configuration can usually
-correct for clock drift sufficiently until the source becomes available again.
+configuration is necessary. Systems which do not function as pool
+servers do not require their time to be as accurate as those that do,
+therefore systems that are configured only as a client of the NTP
+network can safely be operated with a single time source, as if the
+source is lost the default configuration can usually correct for clock
+drift sufficiently until the source becomes available again.
 
 
-<a id="orgf7abf4d"></a>
+<a id="org385ae74"></a>
 
 ### NTP service - join the pool of public NTP servers
 
@@ -114,7 +116,7 @@ The NTP network is organized into a series of layers called
 stratum. Stratum 0 are the hyper accurate time sources that are the
 source for the time provided by all other stratum. Sources in stratum
 0 include the various satellite positioning networks, radio clocks
-such as those provide by the NIST <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>, or atomic clocks that may be
+such as those provide by the NIST <sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>, or atomic clocks that may be
 available if the server is located at a facility that has such a
 thing. These sources are also know as reference clocks, and are the
 ultimate source of time not just for the NTP network, but for most
@@ -143,12 +145,12 @@ Additional stratum proceed along the same plan up until
 stratum 14. Pool servers should be located at stratum 3 or 4.
 
 
-<a id="org75a5eb5"></a>
+<a id="org4881905"></a>
 
 ### Checking the status of the NTP service
 
 
-<a id="orge8122f7"></a>
+<a id="org562cf70"></a>
 
 ## Unattended upgrades setup
 
@@ -156,12 +158,12 @@ You may wish to delay this until you have email set up, but in any
 case should not delay longer than necessary.
 
 
-<a id="org25ed8e7"></a>
+<a id="org1b7e8e7"></a>
 
 # Email server
 
 
-<a id="org0440baa"></a>
+<a id="org6f5052f"></a>
 
 ## Full email service
 
@@ -171,12 +173,12 @@ remote client such as Thunderbird or K-9 Mail, receiving emails sent
 from other domains, and providing IMAP services to remote clients.
 
 
-<a id="orgbb8d251"></a>
+<a id="org14bf65b"></a>
 
 ### TODO Implement encrypted passwords in Dovecot / Postfix
 
 
-<a id="org62a01e9"></a>
+<a id="org03b4c43"></a>
 
 ## TODO Local/forwarded email
 
@@ -189,5 +191,11 @@ a local mailbox or forwarded to the server handling mail for the domain.
 
 <sup><a id="fn.1" href="#fnr.1">1</a></sup> Network Time Protocol
 
-<sup><a id="fn.2" href="#fnr.2">2</a></sup> The United States National
+<sup><a id="fn.2" href="#fnr.2">2</a></sup> Coordinated
+Universal Time. UTC is the time zone of London, United Kingdom, but
+does not have daylight savings time. It is essentially similar to
+Greenwich Mean Time, but in GMT the day starts at noon, while in UTC
+the day starts at midnight
+
+<sup><a id="fn.3" href="#fnr.3">3</a></sup> The United States National
 Institute of Standards and Technology
