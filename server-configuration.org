@@ -27,6 +27,11 @@ repository that will control all changes made in the /etc directory.
 ** SSH server setup
 
 ** NTP server setup
+#+BEGIN_QUOTE
+The man with one watch knows what time it is. The man with two watches
+is never sure. --- Segal's law
+#+END_QUOTE
+
 Many internet services depend on the clocks on both sides of a
 connection to be set accurately. The NTP [fn::Network Time Protocol]
 service allows this to be done with a high degree of accuracy with
@@ -46,7 +51,7 @@ current time using the existing NTP network. No additional
 configuration is necessary. Systems that are configured only as a
 client of the NTP network can safely be operated with a single time
 source, as if the source is lost the default configuration can usually
-correct for clock drift until the source becomes available again.
+correct for clock drift sufficiently until the source becomes available again.
 
 *** NTP service - join the pool of public NTP servers
 The NTP network is organized into a series of layers called
@@ -72,13 +77,12 @@ servers. Like stratum 2 servers they require several sources to
 maintain accuracy. The ideal number to track must balance the need of
 the stratum 3 server to provide an accurate time with the need of the
 stratum 2 servers, which suffer extremely heavy traffic, to avoid
-being overwhelmed. The worst case number is 2, a fact pointed out by
-the famous observation that the man with one watch always knows the
-time, but the man with two is never sure. The ideal number is
-generally acknowledge as being between 5 and 7. A server that has
-fewer than five sources risks losing enough sources that it is left
-with two. A server that exceeds seven sources puts far too much load
-on the network.
+being overwhelmed. The worst case number is 2, since there is no way
+to determine which is likely to be correct if they disagree. The ideal
+number is generally acknowledged as being between 5 and 7. A server
+that has fewer than five sources risks losing enough sources that it
+is left with two. A server that exceeds seven sources puts far too
+much load on the network.
 
 Additional stratum proceed along the same plan up until
 stratum 14. Pool servers should be located at stratum 3 or 4.
