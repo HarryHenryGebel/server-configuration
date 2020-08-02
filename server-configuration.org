@@ -29,9 +29,11 @@ system.]). Patches[fn::Please submit any patches or pull requests
 against the source file =server-configuration.org=, not against
 generated files such as =README.md=] or suggestions for improvement,
 especially regarding security or best practices, are welcome at all
-times, as are differing opinions. This document is released into the
-public domain where legally permissible, and all rights are
-permanently and irrevocably waived, to the extent permitted by law.
+times, as are differing opinions.
+
+This document is released into the public domain where legally
+permissible, and all rights are permanently and irrevocably waived, to
+the extent permitted by law.
 
 * Acquiring a domain name
 Traffic over the internet is routed to numeric addresses known as IP
