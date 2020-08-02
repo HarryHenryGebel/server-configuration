@@ -12,7 +12,7 @@ intended primarily for the author's own benefit, both as a writing
 exercise and as a reference, but is made available on a public
 repository in the hope that others may find it useful, or at least
 educational or exasperating. It assumes the user knows how to use ssh,
-and has already generated a ssh key pair for logins [fn::Users of
+and has already generated a ssh key pair for logins[fn::Users of
 Github may have already set up a ssh key pair, and may safely use the
 same key pair they use to interact with their github repositories to
 log into any servers they create], and that the user already possesses
@@ -57,7 +57,7 @@ is never sure. --- Segal's law
 #+END_QUOTE
 
 Many internet services depend on the clocks on both sides of a
-connection to being accurate. The NTP [fn::Network Time Protocol]
+connection to being accurate. The NTP[fn::Network Time Protocol]
 service allows clocks to be synchronized to UTC[fn::Coordinated
 Universal Time. UTC is the time zone of London, United Kingdom, but
 does not have daylight savings time. It is essentially similar to
@@ -93,7 +93,7 @@ The NTP network is organized into a series of layers called
 stratum. Stratum 0 are the hyper accurate time sources that are the
 source for the time provided by all other stratum. Sources in stratum
 0 include the various satellite positioning networks, radio clocks
-such as those provide by the NIST [fn:: The United States National
+such as those provide by the NIST[fn:: The United States National
 Institute of Standards and Technology, formerly known as the National
 Bureau of Standards], or atomic clocks that may be available if the
 server is located at a facility that has such a thing. These sources
