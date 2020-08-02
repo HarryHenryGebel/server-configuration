@@ -4,7 +4,6 @@
 #+DATE: <2020-08-02 Sun>
 #+LANGUAGE: en
 
-* Plans
 * Acquiring a domain name
 
 ** Registering your own domain name
