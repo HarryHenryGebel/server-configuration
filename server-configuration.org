@@ -2,6 +2,7 @@
 #+AUTHOR: Harry Henry Gebel
 #+EMAIL: harry@gebel.tech
 #+DATE: <2020-08-02 Sun>
+#+EXPORT_FILE_NAME: README
 #+LANGUAGE: en
 
 * Acquiring a domain name
