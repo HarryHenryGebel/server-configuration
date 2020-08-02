@@ -5,6 +5,17 @@
 #+LANGUAGE: en
 
 * Plans
+* Acquiring a domain name
+
+** Registering your own domain name
+
+** Using a free domain name service
+
+* Acquiring a Debian server
+
+** Digital Ocean
+
+** Google Compute Cloud
 
 * Getting started
 
