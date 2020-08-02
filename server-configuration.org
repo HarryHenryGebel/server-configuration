@@ -63,6 +63,88 @@ case is probably not recommended for a free domain.
 
 ** A brief introduction to the Domain Name Service
 
+*** The components of a domain name
+The domain name service organizes domains into levels, each level is
+separated buy a dot, and the levels are organized from right to left
+with the rightmost name being the most general and the left most being
+the most specific.
+
+The rightmost domain is called the Top Level Domain or TLD. TLDs are
+assigned by IANA[fn::The Internet Assigned Numbers Authority, part of
+ICANN, the Internet Corporation for Assigned Names and Numbers, a
+non-profit corporation founded by the US Department of Commerce to
+manage worldwide assignment of IP address and domain names] and their
+management is delegated to a network of domain registrars who manage
+the leasing of domain names to users, and provide data on the domains
+to IANA for use in the root name servers that are ultimately
+responsible for making sure any name can be looked up and associated
+with the appropriate IP address. A TLD cannot be assigned on its own
+and function solely as a way of organizing the lower level domains.
+
+In most cases, the next level down is the domain that can be leased by
+an individual or organization for their own use. The exception to that
+rule is the two letter country domains such as =us=, =ca=, and =uk=,
+which function as a second, level of TLD before leasing domain names
+further down to end users.
+
+The leased domain name can be referred to as the domain, and it's owner
+can manage it as they see fit, setting up additional levels, assigning
+address directly under the domain, or both.
+
+In domain name =central.gebel.tech=, =gebel.tech= is the domain and
+=central= is the name of a specific computer located in that domain.
+
+In the domain =www.bbc.co.uk=, bbc.co.uk is the domain and =www=
+refers to a specific computer in that domain. It is interesting
+because =www.bbc.co.uk= maps to numerous IP address, and every time it
+is looked up a different address is provided. This prevents any one of the
+domain owner's computers from being overloaded by traffic.
+
+*** DNS servers
+The DNS requires the owner of each domain to provide at least three
+name servers. The IP addresses of these servers are given to the
+registrar which leased out the domain and eventually reach the root
+name servers that govern all names on the internet. When your computer
+wishes to look up the IP address associated with a domain name, it
+contacts either a DNS server provided by your ISP, or a public server
+such as 8.8.8.8[fn::Provided as a public service by Google]. Note that
+name servers are listed in network settings by IP addresses instead of
+by name. This is because of a chicken-and-egg problem: you must be
+able to contact a name server without knowing it's name, because you
+can't look up it's name until you contact it.
+
+The name server contacted sends a request through higher level servers
+on the network to discover the name servers provided by the domain
+owner. Once the addresses of these servers is determined, one of them
+is contacted, and provides the IP address associated with the full
+name, or an error if the name does not exist.
+
+For example, if you try to lookup =central.gebel.tech=, your local
+name server first queries the DNS network to find the addresses the
+name servers provided by the owner of the =gebel.tech= domain. Your
+name server then asks one of the =gebel.tech= name servers for the
+address of =central.gebel.tech=. The =gebel.tech= name server then
+consults it's DNS records and responds with the address. Finally, your
+name server returns the address (or error) to your computer. The types
+and formats of DNS records are standardized and are discussed in the
+next section.
+
+Although the domain owner must provide three name servers, they do not
+have to operate those servers themselves. Indeed, when just starting
+out with one server they cannot as they have no way of satisfying the
+three server minimum. Generally, the name servers will be provided by
+the same service that hosts the server, and each service will provide
+an interface to manage any domains owned by their customers. This
+document will describe how to manage a domain on DigitalOcean, but
+other services will be similar.
+
+Operating a server on the DNS network is an advanced topic and well
+beyond the scope of this document. In addition to the challenges of
+operating the servers themselves, it also involves having a block of
+addresses set aside for your domain. This is also outside the scope of
+this document, and not practical for the operator of a small network
+of just one or a handful of systems.
+
 ** Registering your own domain name
 
 ** Obtaining a free domain name.
