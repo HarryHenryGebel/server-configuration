@@ -1,33 +1,33 @@
 
 # Table of Contents
 
-1.  [About this document](#orge4cff7a)
-2.  [Acquiring a domain name](#org0ad99df)
-    1.  [Registering your own domain name](#org0dec54a)
-    2.  [Using a free domain name service](#org39b2f20)
-    3.  [Static and dynamic IP addresses](#org24db87b)
-3.  [Acquiring a Debian server](#org42df7be)
-    1.  [Digital Ocean](#orgffeb24b)
-    2.  [Google Compute Cloud](#orgb27aa38)
-4.  [Getting started](#org85f1b05)
-    1.  [Etckeeper](#orgc45cdd5)
-    2.  [fish](#org1ff5142)
-    3.  [sudo](#orgd86b415)
-        1.  [The editor variable](#org68121d1)
-    4.  [SSH server setup](#org5a3fd65)
-    5.  [NTP server setup](#orgf7ffcd7)
-        1.  [NTP service - sync time only](#org1ec27e4)
-        2.  [NTP service - join the pool of public NTP servers](#orge22949a)
-        3.  [Checking the status of the NTP service](#org1b12c44)
-    6.  [Unattended upgrades setup](#orgd504471)
-5.  [Email server](#org183bef0)
-    1.  [Full email service](#org453c1e6)
-        1.  [Implement encrypted passwords in Dovecot / Postfix](#orgd2b7d61)
-    2.  [Local/forwarded email](#org517ceff)
+1.  [About this document](#org5c89293)
+2.  [Acquiring a domain name](#org4f4ccb0)
+    1.  [Registering your own domain name](#orgf8d2ab7)
+    2.  [Using a free domain name service](#org564f13c)
+    3.  [Static and dynamic IP addresses](#org8953749)
+3.  [Acquiring a Debian server](#orgf1dc5c5)
+    1.  [Digital Ocean](#org2642bb2)
+    2.  [Google Compute Cloud](#orgc27ab70)
+4.  [Getting started](#org3af7568)
+    1.  [Etckeeper](#org99d8eda)
+    2.  [fish](#orgbae1ab2)
+    3.  [sudo](#org203ea79)
+        1.  [The editor variable](#orga0e6853)
+    4.  [SSH server setup](#org3717bdb)
+    5.  [NTP server setup](#orge906fff)
+        1.  [NTP service - sync time only](#orga545540)
+        2.  [NTP service - join the pool of public NTP servers](#org6e96e5c)
+        3.  [Checking the status of the NTP service](#org2b993aa)
+    6.  [Unattended upgrades setup](#orgb45e4ca)
+5.  [Email server](#org383d197)
+    1.  [Full email service](#orgc9aa45a)
+        1.  [Implement encrypted passwords in Dovecot / Postfix](#org56c8397)
+    2.  [Local/forwarded email](#orgb44ae6c)
 
 
 
-<a id="orge4cff7a"></a>
+<a id="org5c89293"></a>
 
 # About this document
 
@@ -40,49 +40,50 @@ educational or exasperating. It assumes the user knows how to use ssh
 and has already generated a ssh key pair for logins<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, and that the user already possesses
 at least a rudimentary knowledge of working from the command line and
 has their local system set up with a Unix compatible shell if it does
-not come with one (Windows<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>). Patches or suggestions for improvement, especially regarding
-security or best practices, are welcome at all times, as are differing
-opinions. This document is released into the public domain where
-legally permissible, and all rights are permanently and irrevocably
-waived, to the extent permitted by law.
+not come with one (Windows<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>). Patches or suggestions for
+improvement, especially regarding security or best practices, are
+welcome at all times, as are differing opinions. This document is
+released into the public domain where legally permissible, and all
+rights are permanently and irrevocably waived, to the extent permitted
+by law.
 
 
-<a id="org0ad99df"></a>
+<a id="org4f4ccb0"></a>
 
 # Acquiring a domain name
 
 
-<a id="org0dec54a"></a>
+<a id="orgf8d2ab7"></a>
 
 ## Registering your own domain name
 
 
-<a id="org39b2f20"></a>
+<a id="org564f13c"></a>
 
 ## Using a free domain name service
 
 
-<a id="org24db87b"></a>
+<a id="org8953749"></a>
 
 ## Static and dynamic IP addresses
 
 
-<a id="org42df7be"></a>
+<a id="orgf1dc5c5"></a>
 
 # Acquiring a Debian server
 
 
-<a id="orgffeb24b"></a>
+<a id="org2642bb2"></a>
 
 ## Digital Ocean
 
 
-<a id="orgb27aa38"></a>
+<a id="orgc27ab70"></a>
 
 ## Google Compute Cloud
 
 
-<a id="org85f1b05"></a>
+<a id="org3af7568"></a>
 
 # Getting started
 
@@ -90,7 +91,7 @@ These steps are necessary to get from a fresh, unconfigured server to one
 that can be securely logged into and left running.
 
 
-<a id="orgc45cdd5"></a>
+<a id="org99d8eda"></a>
 
 ## Etckeeper
 
@@ -98,27 +99,27 @@ Etckeeper is the first package to install, it will create a git
 repository that will control all changes made in the /etc directory.
 
 
-<a id="org1ff5142"></a>
+<a id="orgbae1ab2"></a>
 
 ## fish
 
 
-<a id="orgd86b415"></a>
+<a id="org203ea79"></a>
 
 ## sudo
 
 
-<a id="org68121d1"></a>
+<a id="orga0e6853"></a>
 
 ### The editor variable
 
 
-<a id="org5a3fd65"></a>
+<a id="org3717bdb"></a>
 
 ## SSH server setup
 
 
-<a id="orgf7ffcd7"></a>
+<a id="orge906fff"></a>
 
 ## NTP server setup
 
@@ -144,7 +145,7 @@ renders questions involving time calculations across the jump between
 standard time and daylight savings time moot.
 
 
-<a id="org1ec27e4"></a>
+<a id="orga545540"></a>
 
 ### NTP service - sync time only
 
@@ -158,7 +159,7 @@ source is lost the default configuration can usually correct for clock
 drift sufficiently until the source becomes available again.
 
 
-<a id="orge22949a"></a>
+<a id="org6e96e5c"></a>
 
 ### NTP service - join the pool of public NTP servers
 
@@ -195,12 +196,12 @@ Additional stratum proceed along the same plan up until
 stratum 14. Pool servers should be located at stratum 3 or 4.
 
 
-<a id="org1b12c44"></a>
+<a id="org2b993aa"></a>
 
 ### Checking the status of the NTP service
 
 
-<a id="orgd504471"></a>
+<a id="orgb45e4ca"></a>
 
 ## Unattended upgrades setup
 
@@ -208,12 +209,12 @@ You may wish to delay this until you have email set up, but in any
 case should not delay longer than necessary.
 
 
-<a id="org183bef0"></a>
+<a id="org383d197"></a>
 
 # Email server
 
 
-<a id="org453c1e6"></a>
+<a id="orgc9aa45a"></a>
 
 ## Full email service
 
@@ -223,12 +224,12 @@ remote client such as Thunderbird or K-9 Mail, receiving emails sent
 from other domains, and providing IMAP services to remote clients.
 
 
-<a id="orgd2b7d61"></a>
+<a id="org56c8397"></a>
 
 ### TODO Implement encrypted passwords in Dovecot / Postfix
 
 
-<a id="org517ceff"></a>
+<a id="orgb44ae6c"></a>
 
 ## TODO Local/forwarded email
 
@@ -244,9 +245,12 @@ Github may have already set up a ssh key pair, and may safely use the
 same key pair they use to interact with their github repositories to
 log into any servers they create
 
-<sup><a id="fn.2" href="#fnr.2">2</a></sup> Unix compatible shells for Windows are
-included with Gitbash, the Windows Subsystem for Linux, Cygwin, and
-MinGW
+<sup><a id="fn.2" href="#fnr.2">2</a></sup> Some examples of Windows projects that
+include Unix compatible shells are Git for Windows (Gitbash), the
+Windows Subsystem for Linux, Cygwin, and MinGW. There are other
+options as well, these are the ones the author is aware of. PuTTY is
+also an option to use ssh without having a Unix compatible shell
+installed on the local system.
 
 <sup><a id="fn.3" href="#fnr.3">3</a></sup> Network Time Protocol
 
