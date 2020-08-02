@@ -4,6 +4,7 @@
 #+DATE: <2020-08-02 Sun>
 #+EXPORT_FILE_NAME: README
 #+LANGUAGE: en
+#+PROPERTY: header-args :exports code
 
 * About this document
 This document is an opinionated description of how to set up a server
@@ -33,18 +34,19 @@ public domain where legally permissible, and all rights are
 permanently and irrevocably waived, to the extent permitted by law.
 
 * Acquiring a domain name
+** A brief introduction to the Domain Name Service
 
 ** Registering your own domain name
 
-** Using a free domain name service
+** Obtaining a free domain name.
 
 ** Static and dynamic IP addresses
 
 * Acquiring a Debian server
 
-** Digital Ocean
+** DigitalOcean
 
-** Google Compute Cloud
+** Google Compute Engine
 
 * Getting started
 These steps are necessary to get from a fresh, unconfigured server to one
