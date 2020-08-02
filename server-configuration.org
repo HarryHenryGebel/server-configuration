@@ -5,6 +5,17 @@
 #+EXPORT_FILE_NAME: README
 #+LANGUAGE: en
 
+* About this document
+This document is an opinionated description of how to set up a server
+from scratch, including the reasons for certain decisions. It is
+intended primarily for the author's own benefit, but it placed on a
+public repository so others may find it useful, or at least
+educational or exasperating. Suggestions for improvement, especially
+regarding security or best practices, are welcome at all times, as are
+differing opinions. This document is released into the public domain
+where legally permissible, and all rights are permanently and
+irrevocably waived, to the extent permitted by law.
+
 * Acquiring a domain name
 
 ** Registering your own domain name
@@ -39,16 +50,21 @@ service allows clocks to be synchronized to UTC[fn::Coordinated
 Universal Time. UTC is the time zone of London, United Kingdom, but
 does not have daylight savings time. It is essentially similar to
 Greenwich Mean Time, but in GMT the day starts at noon, while in UTC
-the day starts at midnight] with a high degree of accuracy with
+the day starts at midnight] with a high degree of accuracy with and
 minimal configuration. If a server exists on a permanent, publicly
 accessible IP address, it can optionally be set up to give back to the
 internet time community by becoming part of the pool of public time
 servers.
 
-Servers should generally be left using UTC as their local timezone. In
-this way, logs can easily be compared even though the servers are
-physically located in different time zones than the administrator or
-other managed servers. UTC is the standard time zone of the internet.
+Debian servers come with their local time set to UTC, and should
+generally be left with UTC set as their local timezone. In this way,
+logs can easily be compared even though the servers are physically
+located in different time zones than the administrator or other
+managed servers. UTC is the standard time zone of the internet, and
+has many advantages over local time including being at all times the
+same at all locations worldwide, and it lacks daylight savings time which
+renders questions involving time calculations across the jump between
+standard time and daylight savings time moot.
 
 *** NTP service - sync time only
 Debian comes configured to automatically keep it's clock synced to the
