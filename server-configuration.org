@@ -34,6 +34,31 @@ public domain where legally permissible, and all rights are
 permanently and irrevocably waived, to the extent permitted by law.
 
 * Acquiring a domain name
+Traffic over the internet is routed to numeric addresses known as IP
+address which function similarly to phone numbers. These addresses are
+difficult to remember, and so the DNS[fn::Domain Name System] service
+was created to allow them to be looked up by name. DNS provides
+various types of records that allow you to look up an IP address from
+a domain name, find the services such as the mail server for a domain,
+redirect certain names to other names, lookup information about a
+domain, and lookup domain names from IP addresses. Purchasing,
+or more accurately leasing[fn::Domains are public resources, and can
+only be leased not owned], your own domain name gives you complete
+control of the domain on a yearly basis and, if you wish to host your
+own email server, will help greatly in making emails originating from
+your domain get the highest trust ratings, preventing emails you send
+from being marked as spam or rejected outright.
+
+Another option is to obtain a free name from one of several
+sources. These names are subdomains to the domains the free domain
+provider owns, and therefore lack some of the name recognition or
+branding that can be associated with your own domain. However, they
+also lack the yearly costs of purchasing a domain name of your
+own. For reasons that will be gone into later, email sent from these
+domains will be rejected as spam by many receivers. This is not a
+concern if you choose not to host email from your domain, which in any
+case is probably not recommended for a free domain.
+
 ** A brief introduction to the Domain Name Service
 
 ** Registering your own domain name
