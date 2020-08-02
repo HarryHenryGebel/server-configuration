@@ -8,13 +8,13 @@
 * About this document
 This document is an opinionated description of how to set up a server
 from scratch, including the reasons for certain decisions. It is
-intended primarily for the author's own benefit, but it placed on a
-public repository so others may find it useful, or at least
-educational or exasperating. Suggestions for improvement, especially
-regarding security or best practices, are welcome at all times, as are
-differing opinions. This document is released into the public domain
-where legally permissible, and all rights are permanently and
-irrevocably waived, to the extent permitted by law.
+intended primarily for the author's own benefit, but it made available
+on a public repository in the hope that others may find it useful, or
+at least educational or exasperating. Suggestions for improvement,
+especially regarding security or best practices, are welcome at all
+times, as are differing opinions. This document is released into the
+public domain where legally permissible, and all rights are
+permanently and irrevocably waived, to the extent permitted by law.
 
 * Acquiring a domain name
 
