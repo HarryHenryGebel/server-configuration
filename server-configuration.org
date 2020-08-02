@@ -110,18 +110,17 @@ is never sure. --- Segal's law
 
 Many internet services depend on the clocks on both sides of a
 connection to being accurate. The NTP[fn::Network Time Protocol]
-service allows clocks to be synchronized to UTC[fn::Coordinated
-Universal Time. UTC is the time zone of London, United Kingdom, but
-does not have daylight savings time. It is essentially similar to
-Greenwich Mean Time, one major difference being that in GMT, owing to
-its use in astronomy and navigation, the day starts at noon, while in
-UTC the day starts at midnight. Consequently, while the time will
-normally be identical in UTC and GMT, the date will be different
-between midnight and noon.] with a high degree of accuracy with and
-minimal configuration. If a server exists on a permanent, publicly
-accessible IP address, it can optionally be set up to give back to the
-internet time community by becoming part of the pool of public time
-servers.
+service synchronizes the system clock to UTC[fn::Coordinated Universal
+Time. UTC is the time zone of London, United Kingdom, but does not
+have daylight savings time. It is essentially similar to Greenwich
+Mean Time, one major difference being that in GMT, owing to its use in
+astronomy and navigation, the day starts at noon, while in UTC the day
+starts at midnight. Consequently, while the time will normally be
+identical in UTC and GMT, the date will be different between midnight
+and noon.] to a high degree of accuracy with minimal configuration. If
+a server exists on a permanent, publicly accessible IP address, it can
+optionally be set up to give back to the internet time community by
+becoming part of the pool of public time servers.
 
 Debian servers come with their local time set to UTC, and should
 generally be left with UTC set as their local timezone. In this way,
