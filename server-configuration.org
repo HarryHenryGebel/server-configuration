@@ -29,6 +29,8 @@ waived, to the extent permitted by law.
 
 ** Using a free domain name service
 
+** Static and dynamic IP addresses
+
 * Acquiring a Debian server
 
 ** Digital Ocean
