@@ -1,32 +1,33 @@
 
 # Table of Contents
 
-1.  [About this document](#org0139121)
-2.  [Acquiring a domain name](#org121fc91)
-    1.  [Registering your own domain name](#orgd56172e)
-    2.  [Using a free domain name service](#org6694bd0)
-3.  [Acquiring a Debian server](#org917c410)
-    1.  [Digital Ocean](#org7b52a51)
-    2.  [Google Compute Cloud](#orgfc4b15e)
-4.  [Getting started](#org3255843)
-    1.  [Etckeeper](#org4142b29)
-    2.  [fish](#org8fc5dd1)
-    3.  [sudo](#orge1d5759)
-        1.  [The editor variable](#org5081fce)
-    4.  [SSH server setup](#orgb8e2c08)
-    5.  [NTP server setup](#org5a27014)
-        1.  [NTP service - sync time only](#orgc32e02f)
-        2.  [NTP service - join the pool of public NTP servers](#org3efc668)
-        3.  [Checking the status of the NTP service](#org85ea268)
-    6.  [Unattended upgrades setup](#org4d3b2b9)
-5.  [Email server](#org57f13cf)
-    1.  [Full email service](#org5b58e02)
-        1.  [Implement encrypted passwords in Dovecot / Postfix](#org07cdcae)
-    2.  [Local/forwarded email](#org25bb595)
+1.  [About this document](#orge4cff7a)
+2.  [Acquiring a domain name](#org0ad99df)
+    1.  [Registering your own domain name](#org0dec54a)
+    2.  [Using a free domain name service](#org39b2f20)
+    3.  [Static and dynamic IP addresses](#org24db87b)
+3.  [Acquiring a Debian server](#org42df7be)
+    1.  [Digital Ocean](#orgffeb24b)
+    2.  [Google Compute Cloud](#orgb27aa38)
+4.  [Getting started](#org85f1b05)
+    1.  [Etckeeper](#orgc45cdd5)
+    2.  [fish](#org1ff5142)
+    3.  [sudo](#orgd86b415)
+        1.  [The editor variable](#org68121d1)
+    4.  [SSH server setup](#org5a3fd65)
+    5.  [NTP server setup](#orgf7ffcd7)
+        1.  [NTP service - sync time only](#org1ec27e4)
+        2.  [NTP service - join the pool of public NTP servers](#orge22949a)
+        3.  [Checking the status of the NTP service](#org1b12c44)
+    6.  [Unattended upgrades setup](#orgd504471)
+5.  [Email server](#org183bef0)
+    1.  [Full email service](#org453c1e6)
+        1.  [Implement encrypted passwords in Dovecot / Postfix](#orgd2b7d61)
+    2.  [Local/forwarded email](#org517ceff)
 
 
 
-<a id="org0139121"></a>
+<a id="orge4cff7a"></a>
 
 # About this document
 
@@ -35,47 +36,53 @@ from scratch, including the reasons for certain decisions. It is
 intended primarily for the author's own benefit, both as a writing
 exercise and as a reference, but is made available on a public
 repository in the hope that others may find it useful, or at least
-educational or exasperating. It assumes the user knows how to use ssh,
+educational or exasperating. It assumes the user knows how to use ssh
 and has already generated a ssh key pair for logins<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, and that the user already possesses
-at least a rudimentary knowledge of working from the command
-line. Patches or suggestions for improvement, especially regarding
+at least a rudimentary knowledge of working from the command line and
+has their local system set up with a Unix compatible shell if it does
+not come with one (Windows<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>). Patches or suggestions for improvement, especially regarding
 security or best practices, are welcome at all times, as are differing
 opinions. This document is released into the public domain where
 legally permissible, and all rights are permanently and irrevocably
 waived, to the extent permitted by law.
 
 
-<a id="org121fc91"></a>
+<a id="org0ad99df"></a>
 
 # Acquiring a domain name
 
 
-<a id="orgd56172e"></a>
+<a id="org0dec54a"></a>
 
 ## Registering your own domain name
 
 
-<a id="org6694bd0"></a>
+<a id="org39b2f20"></a>
 
 ## Using a free domain name service
 
 
-<a id="org917c410"></a>
+<a id="org24db87b"></a>
+
+## Static and dynamic IP addresses
+
+
+<a id="org42df7be"></a>
 
 # Acquiring a Debian server
 
 
-<a id="org7b52a51"></a>
+<a id="orgffeb24b"></a>
 
 ## Digital Ocean
 
 
-<a id="orgfc4b15e"></a>
+<a id="orgb27aa38"></a>
 
 ## Google Compute Cloud
 
 
-<a id="org3255843"></a>
+<a id="org85f1b05"></a>
 
 # Getting started
 
@@ -83,7 +90,7 @@ These steps are necessary to get from a fresh, unconfigured server to one
 that can be securely logged into and left running.
 
 
-<a id="org4142b29"></a>
+<a id="orgc45cdd5"></a>
 
 ## Etckeeper
 
@@ -91,27 +98,27 @@ Etckeeper is the first package to install, it will create a git
 repository that will control all changes made in the /etc directory.
 
 
-<a id="org8fc5dd1"></a>
+<a id="org1ff5142"></a>
 
 ## fish
 
 
-<a id="orge1d5759"></a>
+<a id="orgd86b415"></a>
 
 ## sudo
 
 
-<a id="org5081fce"></a>
+<a id="org68121d1"></a>
 
 ### The editor variable
 
 
-<a id="orgb8e2c08"></a>
+<a id="org5a3fd65"></a>
 
 ## SSH server setup
 
 
-<a id="org5a27014"></a>
+<a id="orgf7ffcd7"></a>
 
 ## NTP server setup
 
@@ -119,8 +126,8 @@ repository that will control all changes made in the /etc directory.
 > is never sure. &#x2014; Segal's law
 
 Many internet services depend on the clocks on both sides of a
-connection to being accurate. The NTP<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
-service allows clocks to be synchronized to UTC<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup> with a high degree of accuracy with and
+connection to being accurate. The NTP<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>
+service allows clocks to be synchronized to UTC<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup> with a high degree of accuracy with and
 minimal configuration. If a server exists on a permanent, publicly
 accessible IP address, it can optionally be set up to give back to the
 internet time community by becoming part of the pool of public time
@@ -137,7 +144,7 @@ renders questions involving time calculations across the jump between
 standard time and daylight savings time moot.
 
 
-<a id="orgc32e02f"></a>
+<a id="org1ec27e4"></a>
 
 ### NTP service - sync time only
 
@@ -151,7 +158,7 @@ source is lost the default configuration can usually correct for clock
 drift sufficiently until the source becomes available again.
 
 
-<a id="org3efc668"></a>
+<a id="orge22949a"></a>
 
 ### NTP service - join the pool of public NTP servers
 
@@ -159,7 +166,7 @@ The NTP network is organized into a series of layers called
 stratum. Stratum 0 are the hyper accurate time sources that are the
 source for the time provided by all other stratum. Sources in stratum
 0 include the various satellite positioning networks, radio clocks
-such as those provide by the NIST<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup>, or atomic clocks that may be available if the
+such as those provide by the NIST<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>, or atomic clocks that may be available if the
 server is located at a facility that has such a thing. These sources
 are also know as reference clocks, and are the ultimate source of time
 not just for the NTP network, but for most time used all over the
@@ -188,12 +195,12 @@ Additional stratum proceed along the same plan up until
 stratum 14. Pool servers should be located at stratum 3 or 4.
 
 
-<a id="org85ea268"></a>
+<a id="org1b12c44"></a>
 
 ### Checking the status of the NTP service
 
 
-<a id="org4d3b2b9"></a>
+<a id="orgd504471"></a>
 
 ## Unattended upgrades setup
 
@@ -201,12 +208,12 @@ You may wish to delay this until you have email set up, but in any
 case should not delay longer than necessary.
 
 
-<a id="org57f13cf"></a>
+<a id="org183bef0"></a>
 
 # Email server
 
 
-<a id="org5b58e02"></a>
+<a id="org453c1e6"></a>
 
 ## Full email service
 
@@ -216,12 +223,12 @@ remote client such as Thunderbird or K-9 Mail, receiving emails sent
 from other domains, and providing IMAP services to remote clients.
 
 
-<a id="org07cdcae"></a>
+<a id="orgd2b7d61"></a>
 
 ### TODO Implement encrypted passwords in Dovecot / Postfix
 
 
-<a id="org25bb595"></a>
+<a id="org517ceff"></a>
 
 ## TODO Local/forwarded email
 
@@ -237,14 +244,21 @@ Github may have already set up a ssh key pair, and may safely use the
 same key pair they use to interact with their github repositories to
 log into any servers they create
 
-<sup><a id="fn.2" href="#fnr.2">2</a></sup> Network Time Protocol
+<sup><a id="fn.2" href="#fnr.2">2</a></sup> Unix compatible shells for Windows are
+included with Gitbash, the Windows Subsystem for Linux, Cygwin, and
+MinGW
 
-<sup><a id="fn.3" href="#fnr.3">3</a></sup> Coordinated
+<sup><a id="fn.3" href="#fnr.3">3</a></sup> Network Time Protocol
+
+<sup><a id="fn.4" href="#fnr.4">4</a></sup> Coordinated
 Universal Time. UTC is the time zone of London, United Kingdom, but
 does not have daylight savings time. It is essentially similar to
-Greenwich Mean Time, but in GMT the day starts at noon, while in UTC
-the day starts at midnight
+Greenwich Mean Time, one major difference being that in GMT, owing to
+its use in astronomy and navigation, the day starts at noon, while in
+UTC the day starts at midnight. Consequently, while the time will
+normally be identical in UTC and GMT, the date will be different
+between midnight and noon.
 
-<sup><a id="fn.4" href="#fnr.4">4</a></sup> The United States National
+<sup><a id="fn.5" href="#fnr.5">5</a></sup> The United States National
 Institute of Standards and Technology, formerly known as the National
 Bureau of Standards
