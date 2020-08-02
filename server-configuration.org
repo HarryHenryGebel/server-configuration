@@ -28,6 +28,17 @@ repository that will control all changes made in the /etc directory.
 ** SSH server setup
 
 ** NTP server setup
+Many internet services depend on the clocks on both sides of a
+connection to be set accurately. The NTP service allows this to be
+done with a high degree of accuracy with minimal configuration. If a
+server exists on a permanent, publicly accessible IP address, it can
+optionally be set up to give back to the internet time community by
+becoming part of the pool of public time servers.
+
+*** NTP service - sync time only
+*** NTP service - join the pool of public NTP servers
+
+*** Checking the status of the NTP service
 
 ** Unattended upgrades setup
 You may wish to delay this until you have email set up, but in any
