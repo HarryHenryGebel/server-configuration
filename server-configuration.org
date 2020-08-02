@@ -22,13 +22,13 @@ not come with one (Windows[fn::Some examples of Windows projects that
 include Unix compatible shells are Git for Windows (Gitbash), the
 Windows Subsystem for Linux, Cygwin, and MinGW. There are other
 options as well, these are the ones the author is aware of. PuTTY is
-also an option to use ssh without having a Unix compatible shell
-installed on the local system.]). Patches or suggestions for
-improvement, especially regarding security or best practices, are
-welcome at all times, as are differing opinions. This document is
-released into the public domain where legally permissible, and all
-rights are permanently and irrevocably waived, to the extent permitted
-by law.
+also available for Windows as an option to use ssh without having a
+Unix compatible shell installed on the local system.]). Patches or
+suggestions for improvement, especially regarding security or best
+practices, are welcome at all times, as are differing opinions. This
+document is released into the public domain where legally permissible,
+and all rights are permanently and irrevocably waived, to the extent
+permitted by law.
 
 * Acquiring a domain name
 
