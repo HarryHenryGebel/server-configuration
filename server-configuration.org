@@ -151,9 +151,9 @@ including securely sending email both with local origin and through a
 remote client such as Thunderbird or K-9 Mail, receiving emails sent
 from other domains, and providing IMAP services to remote clients.
 
-*** TODO Implement encrypted passwords in Dovecot / Postfix
+*** Implement encrypted passwords in Dovecot / Postfix
 
-** TODO Local/forwarded email
+** Local/forwarded email
 This will configure the server to direct locally originating emails
 (emails sent from various server administrative tools) to be stored in
 a local mailbox or forwarded to the server handling mail for the domain.
