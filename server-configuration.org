@@ -8,13 +8,20 @@
 * About this document
 This document is an opinionated description of how to set up a server
 from scratch, including the reasons for certain decisions. It is
-intended primarily for the author's own benefit, but it made available
-on a public repository in the hope that others may find it useful, or
-at least educational or exasperating. Suggestions for improvement,
-especially regarding security or best practices, are welcome at all
-times, as are differing opinions. This document is released into the
-public domain where legally permissible, and all rights are
-permanently and irrevocably waived, to the extent permitted by law.
+intended primarily for the author's own benefit, both as a writing
+exercise and as a reference, but is made available on a public
+repository in the hope that others may find it useful, or at least
+educational or exasperating. It assumes the user knows how to use ssh,
+and has already generated a ssh key pair for logins [fn::Users of
+Github may have already set up a ssh key pair, and may safely use the
+same key pair they use to interact with their github repositories to
+log into any servers they create], and that the user already possesses
+at least a rudimentary knowledge of working from the command
+line. Patches or suggestions for improvement, especially regarding
+security or best practices, are welcome at all times, as are differing
+opinions. This document is released into the public domain where
+legally permissible, and all rights are permanently and irrevocably
+waived, to the extent permitted by law.
 
 * Acquiring a domain name
 
