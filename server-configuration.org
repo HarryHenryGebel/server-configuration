@@ -36,6 +36,11 @@ that can be securely logged into and left running.
 Etckeeper is the first package to install, it will create a git
 repository that will control all changes made in the /etc directory.
 
+** fish
+
+** sudo
+*** The editor variable
+
 ** SSH server setup
 
 ** NTP server setup
