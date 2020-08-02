@@ -1,2 +1,40 @@
+#+TITLE: Server Configuration - From nothing to a fully functioning server
+#+AUTHOR: Harry Henry Gebel
+#+EMAIL: harry@gebel.tech
+#+DATE: <2020-08-02 Sun>
+#+LANGUAGE: en
+
 * Plans
+
+* Getting started
+
+These steps are necessary to get from a non-existing server to one
+that can be safely logged into and left running.
+
+** Etckeeper
+Etckeeper is the first package to install, it will create a git
+repository that will control all changes made in the /etc directory.
+
+** SSH server setup
+
+** NTP server setup
+
+** Unattended upgrades setup
+You may wish to delay this until you have email set up, but in any
+case should not delay longer than necessary.
+
+
+* Email server
+
+** Full email service
+This will configure the server to manage all email for a domain,
+including securely sending email both with local origin and through a
+remote client such as Thunderbird or K-9 Mail, receiving emails sent
+from other domains, and providing IMAP services to remote clients.
+
 *** TODO Implement encrypted passwords in Dovecot / Postfix
+
+** TODO Local/forwarded email
+This will configure the server to direct locally originating emails
+(emails sent from various server administrative tools) to be stored in
+a local mailbox or forwarded to another email address.
