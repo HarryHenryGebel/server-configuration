@@ -1,58 +1,58 @@
 
 # Table of Contents
 
-1.  [Acquiring a domain name](#orgdb66936)
-    1.  [Registering your own domain name](#orgeb7b512)
-    2.  [Using a free domain name service](#orgdeebeba)
-2.  [Acquiring a Debian server](#org7fdac50)
-    1.  [Digital Ocean](#org60daf51)
-    2.  [Google Compute Cloud](#org3c38372)
-3.  [Getting started](#orgbf4ccd2)
-    1.  [Etckeeper](#org3ad3e0b)
-    2.  [SSH server setup](#org9697487)
-    3.  [NTP server setup](#org29d4815)
-        1.  [NTP service - sync time only](#orgc946278)
-        2.  [NTP service - join the pool of public NTP servers](#org385ae74)
-        3.  [Checking the status of the NTP service](#org4881905)
-    4.  [Unattended upgrades setup](#org562cf70)
-4.  [Email server](#org1b7e8e7)
-    1.  [Full email service](#org6f5052f)
-        1.  [Implement encrypted passwords in Dovecot / Postfix](#org14bf65b)
-    2.  [Local/forwarded email](#org03b4c43)
+1.  [Acquiring a domain name](#org5aadc30)
+    1.  [Registering your own domain name](#org264b76a)
+    2.  [Using a free domain name service](#org779eb95)
+2.  [Acquiring a Debian server](#org04455ef)
+    1.  [Digital Ocean](#orgef5febb)
+    2.  [Google Compute Cloud](#org4bf4ed9)
+3.  [Getting started](#org3f09d4c)
+    1.  [Etckeeper](#orgaae56f4)
+    2.  [SSH server setup](#orgf1e7139)
+    3.  [NTP server setup](#org6b79aa9)
+        1.  [NTP service - sync time only](#org4b867ff)
+        2.  [NTP service - join the pool of public NTP servers](#org3c7213a)
+        3.  [Checking the status of the NTP service](#org2be6237)
+    4.  [Unattended upgrades setup](#org596e959)
+4.  [Email server](#org1e8e3e8)
+    1.  [Full email service](#org9dcb3f0)
+        1.  [Implement encrypted passwords in Dovecot / Postfix](#orgd648e93)
+    2.  [Local/forwarded email](#org0eca8c0)
 
 
 
-<a id="orgdb66936"></a>
+<a id="org5aadc30"></a>
 
 # Acquiring a domain name
 
 
-<a id="orgeb7b512"></a>
+<a id="org264b76a"></a>
 
 ## Registering your own domain name
 
 
-<a id="orgdeebeba"></a>
+<a id="org779eb95"></a>
 
 ## Using a free domain name service
 
 
-<a id="org7fdac50"></a>
+<a id="org04455ef"></a>
 
 # Acquiring a Debian server
 
 
-<a id="org60daf51"></a>
+<a id="orgef5febb"></a>
 
 ## Digital Ocean
 
 
-<a id="org3c38372"></a>
+<a id="org4bf4ed9"></a>
 
 ## Google Compute Cloud
 
 
-<a id="orgbf4ccd2"></a>
+<a id="org3f09d4c"></a>
 
 # Getting started
 
@@ -60,7 +60,7 @@ These steps are necessary to get from a fresh, unconfigured server to one
 that can be securely logged into and left running.
 
 
-<a id="org3ad3e0b"></a>
+<a id="orgaae56f4"></a>
 
 ## Etckeeper
 
@@ -68,12 +68,12 @@ Etckeeper is the first package to install, it will create a git
 repository that will control all changes made in the /etc directory.
 
 
-<a id="org9697487"></a>
+<a id="orgf1e7139"></a>
 
 ## SSH server setup
 
 
-<a id="org29d4815"></a>
+<a id="org6b79aa9"></a>
 
 ## NTP server setup
 
@@ -94,7 +94,7 @@ physically located in different time zones than the administrator or
 other managed servers. UTC is the standard time zone of the internet.
 
 
-<a id="orgc946278"></a>
+<a id="org4b867ff"></a>
 
 ### NTP service - sync time only
 
@@ -108,7 +108,7 @@ source is lost the default configuration can usually correct for clock
 drift sufficiently until the source becomes available again.
 
 
-<a id="org385ae74"></a>
+<a id="org3c7213a"></a>
 
 ### NTP service - join the pool of public NTP servers
 
@@ -116,11 +116,11 @@ The NTP network is organized into a series of layers called
 stratum. Stratum 0 are the hyper accurate time sources that are the
 source for the time provided by all other stratum. Sources in stratum
 0 include the various satellite positioning networks, radio clocks
-such as those provide by the NIST <sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>, or atomic clocks that may be
-available if the server is located at a facility that has such a
-thing. These sources are also know as reference clocks, and are the
-ultimate source of time not just for the NTP network, but for most
-time used all over the world.
+such as those provide by the NIST <sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>, or atomic clocks that may be available if the
+server is located at a facility that has such a thing. These sources
+are also know as reference clocks, and are the ultimate source of time
+not just for the NTP network, but for most time used all over the
+world.
 
 Stratum 1 servers synchronize their time directly from a reference clock.
 
@@ -145,12 +145,12 @@ Additional stratum proceed along the same plan up until
 stratum 14. Pool servers should be located at stratum 3 or 4.
 
 
-<a id="org4881905"></a>
+<a id="org2be6237"></a>
 
 ### Checking the status of the NTP service
 
 
-<a id="org562cf70"></a>
+<a id="org596e959"></a>
 
 ## Unattended upgrades setup
 
@@ -158,12 +158,12 @@ You may wish to delay this until you have email set up, but in any
 case should not delay longer than necessary.
 
 
-<a id="org1b7e8e7"></a>
+<a id="org1e8e3e8"></a>
 
 # Email server
 
 
-<a id="org6f5052f"></a>
+<a id="org9dcb3f0"></a>
 
 ## Full email service
 
@@ -173,12 +173,12 @@ remote client such as Thunderbird or K-9 Mail, receiving emails sent
 from other domains, and providing IMAP services to remote clients.
 
 
-<a id="org14bf65b"></a>
+<a id="orgd648e93"></a>
 
 ### TODO Implement encrypted passwords in Dovecot / Postfix
 
 
-<a id="org03b4c43"></a>
+<a id="org0eca8c0"></a>
 
 ## TODO Local/forwarded email
 
@@ -198,4 +198,5 @@ Greenwich Mean Time, but in GMT the day starts at noon, while in UTC
 the day starts at midnight
 
 <sup><a id="fn.3" href="#fnr.3">3</a></sup> The United States National
-Institute of Standards and Technology
+Institute of Standards and Technology, formerly known as the National
+Bureau of Standards

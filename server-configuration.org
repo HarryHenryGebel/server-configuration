@@ -66,11 +66,12 @@ stratum. Stratum 0 are the hyper accurate time sources that are the
 source for the time provided by all other stratum. Sources in stratum
 0 include the various satellite positioning networks, radio clocks
 such as those provide by the NIST [fn:: The United States National
-Institute of Standards and Technology], or atomic clocks that may be
-available if the server is located at a facility that has such a
-thing. These sources are also know as reference clocks, and are the
-ultimate source of time not just for the NTP network, but for most
-time used all over the world.
+Institute of Standards and Technology, formerly known as the National
+Bureau of Standards], or atomic clocks that may be available if the
+server is located at a facility that has such a thing. These sources
+are also know as reference clocks, and are the ultimate source of time
+not just for the NTP network, but for most time used all over the
+world.
 
 Stratum 1 servers synchronize their time directly from a reference clock.
 
