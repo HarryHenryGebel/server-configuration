@@ -74,7 +74,9 @@ case is probably not recommended for a free domain.
 ** Google Cloud Platform
 Google Compute Platform (GCP) provides a singe free Debian[fn::Like
 Digital Ocean there are many other options as well.] server to any
-user with a Google account. The hardware specifications for this free
+user with a Google account.
+
+The hardware specifications for this free
 server are essentially equal to the resources of the $5/month server
 from Digital Ocean, but the bandwidth limitation is much
 lower[fn::1GB/month for a free GCP server, versus 1TB/month for a $5
