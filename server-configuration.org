@@ -71,7 +71,21 @@ case is probably not recommended for a free domain.
 
 ** DigitalOcean
 
-** Google Compute Engine
+** Google Cloud Platform
+Google Compute Platform (GCP) provides a singe free Debian[fn::Like
+Digital Ocean there are many other options as well.] server to any
+user with a Google account. The hardware specifications for this free
+server are essentially equal to the resources of the $5/month server
+from Digital Ocean, but the bandwidth limitation is much
+lower[fn::1GB/month for a free GCP server, versus 1TB/month for a $5
+server from DigitalOcean]. Owing to the extreme speeds available from
+Google's network, bandwidth from Google is generally more expensive
+than other providers. While the bandwidth limitations place some
+limitations on the use of the server, it can still be useful for
+learning purposes or to provide simple backup services to a server on
+another network. Setting up a server using GCP is outside of the scope
+of this document, but is similar in many ways to Digital Ocean and
+Google provides copious documentation.
 
 * Getting started
 These steps are necessary to get from a fresh, unconfigured server to one
