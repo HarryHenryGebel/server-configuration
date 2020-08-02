@@ -17,9 +17,8 @@
 ** Google Compute Cloud
 
 * Getting started
-
-These steps are necessary to get from a non-existing server to one
-that can be safely logged into and left running.
+These steps are necessary to get from a fresh, unconfigured server to one
+that can be securely logged into and left running.
 
 ** Etckeeper
 Etckeeper is the first package to install, it will create a git
@@ -29,7 +28,7 @@ repository that will control all changes made in the /etc directory.
 
 ** NTP server setup
 Many internet services depend on the clocks on both sides of a
-connection to be set accurately. The NTP (Network Time Protocol)
+connection to be set accurately. The NTP [fn::Network Time Protocol]
 service allows this to be done with a high degree of accuracy with
 minimal configuration. If a server exists on a permanent, publicly
 accessible IP address, it can optionally be set up to give back to the
@@ -54,7 +53,7 @@ The NTP network is organized into a series of layers called
 stratum. Stratum 0 are the hyper accurate time sources that are the
 source for the time provided by all other stratum. Sources in stratum
 0 include the various satellite positioning networks, radio clocks
-such as those provide by the NIST [fn:1: The United States National
+such as those provide by the NIST [fn:: The United States National
 Institute of Standards and Technology], or atomic clocks that may be
 available if the server is located at a facility that has such a
 thing. These sources are also know as reference clocks, and are the
@@ -105,4 +104,4 @@ from other domains, and providing IMAP services to remote clients.
 ** TODO Local/forwarded email
 This will configure the server to direct locally originating emails
 (emails sent from various server administrative tools) to be stored in
-a local mailbox or forwarded to another email address.
+a local mailbox or forwarded to the server handling mail for the domain.
