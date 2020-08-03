@@ -168,16 +168,7 @@ single server.
   =104.131.23.129=. =AAAA= records provide the newer IP6 addresses
   such as =2604:a880:800:14::38:b000=. Most new servers will have both
   an IP4 address and an IP6 address, and should have both an =A=
-  record and an =AAAA= record. There is normally no additional charge
-  for providing IP6 addresses, and when opt-in is required it
-  should always be requested because IP6 addresses because the supply
-  of IP4 address is running short. Already, every region except Africa
-  has run out of unassigned addresses and is resorting to reclaiming
-  addresses that were assigned but never or no longer used. In some
-  parts of Asia even those addresses have run out and IP6 addresses
-  are the only ones available. It is only a matter of time until IP4
-  addresses are simply unavailable, so it is best practice to begin
-  using IP6 addresses as soon as possible.
+  record and an =AAAA= record.
 + =CNAME= records provide alternate names for an IP address. The
   =CNAME= record points to another name rather than to an IP
   address. This is useful, for example, to make a single web server
@@ -234,6 +225,16 @@ address instead of it's name.
 * Acquiring a Debian server
 
 ** DigitalOcean
+# There is normally no additional charge for providing IP6 addresses,
+#   and when opt-in is required it should always be requested because
+#   IP6 addresses because the supply of IP4 address is running
+#   short. Already, every region except Africa has run out of unassigned
+#   addresses and is resorting to reclaiming addresses that were
+#   assigned but never or no longer used. In some parts of Asia even
+#   those addresses have run out and IP6 addresses are the only ones
+#   available. It is only a matter of time until IP4 addresses are
+#   simply unavailable, so it is best practice to begin using IP6
+#   addresses as soon as possible.
 
 ** Google Cloud Platform
 Google Compute Platform (GCP) provides a singe free Debian[fn::Like
