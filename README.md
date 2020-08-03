@@ -1,37 +1,37 @@
 
 # Table of Contents
 
-1.  [About this document](#org312caa5)
-2.  [Acquiring a domain name](#org209d28f)
-    1.  [A brief introduction to the Domain Name Service](#orgda59267)
-        1.  [The components of a domain name](#org4c92d23)
-        2.  [DNS servers](#org81037cc)
-        3.  [DNS Records](#org5777190)
-    2.  [Registering your own domain name](#org889d75b)
-    3.  [Obtaining a free domain name.](#org8a9166c)
-    4.  [Static and dynamic IP addresses](#orgf62719d)
-3.  [Acquiring a Debian server](#org0b04d4d)
-    1.  [DigitalOcean](#org67ede52)
-    2.  [Google Cloud Platform](#org749f103)
-4.  [Getting started](#org8ba1001)
-    1.  [Etckeeper](#org96329bd)
-    2.  [fish](#org66f6ec3)
-    3.  [sudo](#org1fb467b)
-        1.  [The editor variable](#org8d430e2)
-    4.  [SSH server setup](#org1c886a1)
-    5.  [NTP server setup](#org5bab10e)
-        1.  [NTP service - sync time only](#org3b188cf)
-        2.  [NTP service - join the pool of public NTP servers](#org5f78e50)
-        3.  [Checking the status of the NTP service](#orgbd697a5)
-    6.  [Unattended upgrades setup](#org26537a5)
-5.  [Email server](#org251c5d7)
-    1.  [Full email service](#org7da233c)
-        1.  [Implement encrypted passwords in Dovecot / Postfix](#org929b992)
-    2.  [Local/forwarded email](#org24da0a1)
+1.  [About this document](#org10d67c8)
+2.  [Acquiring a domain name](#orgeba0bda)
+    1.  [A brief introduction to the Domain Name Service](#orga7af855)
+        1.  [The components of a domain name](#org19b38dd)
+        2.  [DNS servers](#org949cd60)
+        3.  [DNS Records](#orgc266ecc)
+    2.  [Registering your own domain name](#org50842ca)
+    3.  [Obtaining a free domain name.](#org79d81aa)
+    4.  [Static and dynamic IP addresses](#orgebcd24e)
+3.  [Acquiring a Debian server](#orgdfd766d)
+    1.  [DigitalOcean](#org0f81db3)
+    2.  [Google Cloud Platform](#orgbfc4d8c)
+4.  [Getting started](#org8225f36)
+    1.  [Etckeeper](#orge12181f)
+    2.  [fish](#org67f0b4c)
+    3.  [sudo](#orgc5a53ae)
+        1.  [The editor variable](#orgf96bcda)
+    4.  [SSH server setup](#org1bedfa3)
+    5.  [NTP server setup](#orgf5e60ee)
+        1.  [NTP service - sync time only](#org5c219c7)
+        2.  [NTP service - join the pool of public NTP servers](#orgd6de7eb)
+        3.  [Checking the status of the NTP service](#orge2e35dc)
+    6.  [Unattended upgrades setup](#org586020a)
+5.  [Email server](#orgb61797b)
+    1.  [Full email service](#org53df6a8)
+        1.  [Implement encrypted passwords in Dovecot / Postfix](#org9b125f3)
+    2.  [Local/forwarded email](#org99c31a7)
 
 
 
-<a id="org312caa5"></a>
+<a id="org10d67c8"></a>
 
 # About this document
 
@@ -55,7 +55,7 @@ permissible, and all rights are permanently and irrevocably waived, to
 the extent permitted by law.
 
 
-<a id="org209d28f"></a>
+<a id="orgeba0bda"></a>
 
 # Acquiring a domain name
 
@@ -87,12 +87,12 @@ concern if you choose not to host email from your domain, which in any
 case is probably not recommended for a free domain.
 
 
-<a id="orgda59267"></a>
+<a id="orga7af855"></a>
 
 ## A brief introduction to the Domain Name Service
 
 
-<a id="org4c92d23"></a>
+<a id="org19b38dd"></a>
 
 ### The components of a domain name
 
@@ -131,7 +131,7 @@ any one of the domain owner's computers from being overloaded by
 traffic.
 
 
-<a id="org81037cc"></a>
+<a id="org949cd60"></a>
 
 ### DNS servers
 
@@ -180,7 +180,7 @@ this document, and not practical for the operator of a small network
 of just one or a handful of systems.
 
 
-<a id="org5777190"></a>
+<a id="orgc266ecc"></a>
 
 ### DNS Records
 
@@ -247,32 +247,44 @@ single server.
     must then be provided to your domain registrar.
 
 
-<a id="org889d75b"></a>
+<a id="org50842ca"></a>
 
 ## Registering your own domain name
 
 
-<a id="org8a9166c"></a>
+<a id="org79d81aa"></a>
 
 ## Obtaining a free domain name.
 
 
-<a id="orgf62719d"></a>
+<a id="orgebcd24e"></a>
 
 ## Static and dynamic IP addresses
 
+You should determine if your hosting provider gives out a static or
+dynamic IP address. Dynamic addresses can change each time the server
+is rebooted, while static addresses are always the same during the
+lifetime of the server. DigitalOcean provides static addresses, while
+the free server from Google Compute Platform provides dynamic
+addresses. If your server has a domain name and a dynamic address you
+will have to look into methods of updating the domain name's address
+if the server's address changes after a reboot. This is outside the
+scope of this document. Be aware that the new address can take up to
+14,400 seconds to propagate through the network (but normally at most
+3,600 seconds from the last time you accessed the server).
 
-<a id="org0b04d4d"></a>
+
+<a id="orgdfd766d"></a>
 
 # Acquiring a Debian server
 
 
-<a id="org67ede52"></a>
+<a id="org0f81db3"></a>
 
 ## DigitalOcean
 
 
-<a id="org749f103"></a>
+<a id="orgbfc4d8c"></a>
 
 ## Google Cloud Platform
 
@@ -291,7 +303,7 @@ of this document, but is similar in many ways to DigitalOcean and
 Google provides copious documentation.
 
 
-<a id="org8ba1001"></a>
+<a id="org8225f36"></a>
 
 # Getting started
 
@@ -299,7 +311,7 @@ These steps are necessary to get from a fresh, unconfigured server to one
 that can be securely logged into and left running.
 
 
-<a id="org96329bd"></a>
+<a id="orge12181f"></a>
 
 ## Etckeeper
 
@@ -307,27 +319,27 @@ Etckeeper is the first package to install, it will create a git
 repository that will control all changes made in the /etc directory.
 
 
-<a id="org66f6ec3"></a>
+<a id="org67f0b4c"></a>
 
 ## fish
 
 
-<a id="org1fb467b"></a>
+<a id="orgc5a53ae"></a>
 
 ## sudo
 
 
-<a id="org8d430e2"></a>
+<a id="orgf96bcda"></a>
 
 ### The editor variable
 
 
-<a id="org1c886a1"></a>
+<a id="org1bedfa3"></a>
 
 ## SSH server setup
 
 
-<a id="org5bab10e"></a>
+<a id="orgf5e60ee"></a>
 
 ## NTP server setup
 
@@ -352,7 +364,7 @@ renders questions involving time calculations across the jump between
 standard time and daylight savings time moot.
 
 
-<a id="org3b188cf"></a>
+<a id="org5c219c7"></a>
 
 ### NTP service - sync time only
 
@@ -366,7 +378,7 @@ source is lost the default configuration can usually correct for clock
 drift sufficiently until the source becomes available again.
 
 
-<a id="org5f78e50"></a>
+<a id="orgd6de7eb"></a>
 
 ### NTP service - join the pool of public NTP servers
 
@@ -403,12 +415,12 @@ Additional stratum proceed along the same plan up until
 stratum 14. Pool servers should be located at stratum 3 or 4.
 
 
-<a id="orgbd697a5"></a>
+<a id="orge2e35dc"></a>
 
 ### Checking the status of the NTP service
 
 
-<a id="org26537a5"></a>
+<a id="org586020a"></a>
 
 ## Unattended upgrades setup
 
@@ -416,12 +428,12 @@ You may wish to delay this until you have email set up, but in any
 case should not delay longer than necessary.
 
 
-<a id="org251c5d7"></a>
+<a id="orgb61797b"></a>
 
 # Email server
 
 
-<a id="org7da233c"></a>
+<a id="org53df6a8"></a>
 
 ## Full email service
 
@@ -431,12 +443,12 @@ remote client such as Thunderbird or K-9 Mail, receiving emails sent
 from other domains, and providing IMAP services to remote clients.
 
 
-<a id="org929b992"></a>
+<a id="org9b125f3"></a>
 
 ### Implement encrypted passwords in Dovecot / Postfix
 
 
-<a id="org24da0a1"></a>
+<a id="org99c31a7"></a>
 
 ## Local/forwarded email
 
