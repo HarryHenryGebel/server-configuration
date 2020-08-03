@@ -8,28 +8,29 @@
 
 * About this document
 This document is an opinionated description of how to set up a server
-from scratch, including the reasons for certain decisions. It is
-intended primarily for the author's own benefit, both as a writing
-exercise and as a reference, but is made available on a public
-repository in the hope that others may find it useful, or at least
-educational or exasperating. It assumes the user knows how to use ssh
-and has already generated a ssh key pair for logins[fn::Users of
-Github may have already set up a ssh key pair, and may safely use the
-same key pair they use to interact with their github repositories to
-log into any servers they create], and that the user already possesses
-at least a rudimentary knowledge of working from the command line and
-has their local system set up with a Unix compatible shell if it does
-not come with one (Windows[fn::Some examples of Windows projects that
-include Unix compatible shells are Git for Windows (Gitbash), the
-Windows Subsystem for Linux, Cygwin, and MinGW. There are other
-options as well, these are the ones the author is aware of. PuTTY is
-also available for Windows as an option to use ssh without having a
-Unix compatible shell installed on the local
-system.]). Patches[fn::Please submit any patches or pull requests
-against the source file =server-configuration.org=, not against
-generated files such as =README.md=] or suggestions for improvement,
-especially regarding security or best practices, are welcome at all
-times, as are differing opinions.
+Debian 10 Buster server from scratch on DigitalOcean, including the
+reasons for certain decisions. It is intended primarily for the
+author's own benefit, both as a writing exercise and as a reference,
+but is made available on a public repository in the hope that others
+may find it useful, or at least educational or exasperating. It
+assumes the user knows how to use ssh and has already generated a ssh
+key pair for logins[fn::Users of Github may have already set up a ssh
+key pair, and may safely use the same key pair they use to interact
+with their github repositories to log into any servers they create],
+and that the user already possesses at least a rudimentary knowledge
+of working from the command line and has their local system set up
+with a Unix compatible shell if it does not come with one
+(Windows[fn::Some examples of Windows projects that include Unix
+compatible shells are Git for Windows (Gitbash), the Windows Subsystem
+for Linux, Cygwin, and MinGW. There are other options as well, these
+are the ones the author is aware of. PuTTY is also available for
+Windows as an option to use ssh without having a Unix compatible shell
+installed on the local system.]). Patches[fn::Please submit any
+patches or pull requests against the source file
+=server-configuration.org=, not against generated files such as
+=README.md=] or suggestions for improvement, especially regarding
+security or best practices, are welcome at all times, as are differing
+opinions.
 
 This document is released into the public domain where legally
 permissible, and all rights are permanently and irrevocably waived, to
@@ -43,13 +44,16 @@ was created to allow them to be looked up by name. DNS provides
 various types of records that allow you to look up an IP address from
 a domain name, find the services such as the mail server for a domain,
 redirect certain names to other names, lookup information about a
-domain, and lookup domain names from IP addresses. Purchasing,
-or more accurately leasing[fn::Domains are public resources, and can
-only be leased not owned], your own domain name gives you complete
-control of the domain on a yearly basis and, if you wish to host your
-own email server, will help greatly in making emails originating from
-your domain get the highest trust ratings, preventing emails you send
-from being marked as spam or rejected outright.
+domain, and lookup domain names from IP addresses. Purchasing, or more
+accurately leasing[fn::Domains are public resources, and can only be
+leased not owned], your own domain name gives you complete control of
+the domain on a yearly basis and, if you wish to host your own email
+server, will help greatly in making emails originating from your
+domain get the highest trust ratings, preventing emails you send from
+being marked as spam or rejected outright. The various registrars
+frequently offer discounts, and if you are a student some will provide
+a reduced or free domain for a single year. Check all of your options
+before paying for a domain.
 
 Another option is to obtain a free name from one of several
 sources. These names are subdomains to the domains the free domain
@@ -94,11 +98,12 @@ address directly under the domain, or both.
 In domain name =central.gebel.tech=, =gebel.tech= is the domain and
 =central= is the name of a specific computer located in that domain.
 
-In the domain =www.bbc.co.uk=, bbc.co.uk is the domain and =www=
-refers to a specific computer in that domain. It is interesting
-because =www.bbc.co.uk= maps to numerous IP address, and every time it
-is looked up a different address is provided. This prevents any one of the
-domain owner's computers from being overloaded by traffic.
+In the domain =www.bbc.co.uk=, =bbc.co.uk= is the domain and =www=
+refers to a specific computer in that domain. It is an interesting
+example because =www.bbc.co.uk= maps to numerous IP address, and every
+time it is looked up a different address is provided. This prevents
+any one of the domain owner's computers from being overloaded by
+traffic.
 
 *** DNS servers
 The DNS requires the owner of each domain to provide at least three
@@ -145,6 +150,68 @@ addresses set aside for your domain. This is also outside the scope of
 this document, and not practical for the operator of a small network
 of just one or a handful of systems.
 
+*** DNS Records
+DNS records can be one of several standardized types. Each provides a
+different type of information. DNS records are all cached by the
+network of DNS servers, expect 24 - 48 hours for the address of a new
+DNS server to be updated throughout the internet. New records should
+normally be immediately available, but changes in records will take
+anywhere between 1,800 and 14,400 seconds to be reflected throughout
+the network. For this reason it is important to get the values correct
+when first setting up your records.
+
+The following is not a comprehensive list of record types, but
+includes all the types you will use in managing a simple network or
+single server.
++ =A= and =AAAA= records provide the address associated with a domain
+  name. =A= records provide traditional IP4 addresses such as
+  =104.131.23.129=. =AAAA= records provide the newer IP6 addresses
+  such as =2604:a880:800:14::38:b000=. Most new servers will have both
+  an IP4 address and an IP6 address, and should have both an =A=
+  record and an =AAAA= record. There is normally no additional charge
+  for providing IP6 addresses, and when opt-in is required it
+  should always be requested because IP6 addresses because the supply
+  of IP4 address is running short. Already, every region except Africa
+  has run out of unassigned addresses and is resorting to reclaiming
+  addresses that were assigned but never or no longer used. In some
+  parts of Asia even those addresses have run out and IP6 addresses
+  are the only ones available. It is only a matter of time until IP4
+  addresses are simply unavailable, so it is best practice to begin
+  using IP6 addresses as soon as possible.
++ =CNAME= records provide alternate names for an IP address. The
+  =CNAME= record points to another name rather than to an IP
+  address. This is useful, for example, to make a single web server
+  appear to serve pages for multiple domain names. =CNAME= records can
+  point to another =CNAME= record, but an =A= or =AAAA= record must be
+  at the end of the chain.
++ =MX= records point to the mail server for a domain. For example, the
+  =MX= record for =gebel.tech= might be set to =central.gebel.tech=,
+  informing other mail servers that if they are trying to deliver mail
+  to, for example, =harry@gebel.tech=, they should deliver it to the
+  mail server running on =central.gebel.tech=.
++ =TXT= records provide information and data about the domain. One
+  important type of information stored in =TXT= records are the public
+  keys and other information used to determine if an email really
+  originates from the address it claims to. Properly setting these
+  records is vital to making sure your mail server is trusted by other
+  mail servers on the network, and mails sent from it will not be
+  rejected or marked as spam. Equally importantly, these records
+  assure that spammers or other bad actors cannot falsely claim that
+  their emails originate from your domain.
++ =PTR= records operate as reverse =A= and =AAAA= records. They allow
+  names to be looked up by their IP address instead of the other way
+  around. =PTR= records may only be managed by the owner of the IP
+  address assigned to your system, which will normally be your hosting
+  provider. Each hosting provider will have a different way of
+  specifying =PTR= records, which should be discoverable by googling
+  the name of your provider and the phrase "PTR record". Like =TXT=
+  records, =PTR= records are vital to safeguarding the Internet's mail
+  servers, they are also important to helping to identify the origin
+  of traffic in your server logs.
++ =NS= records specify the name servers for a domain. Your hosting
+  provider will supply you with a list of their name servers, which
+  must then be provided to your domain registrar.
+
 ** Registering your own domain name
 
 ** Obtaining a free domain name.
@@ -157,11 +224,11 @@ of just one or a handful of systems.
 
 ** Google Cloud Platform
 Google Compute Platform (GCP) provides a singe free Debian[fn::Like
-Digital Ocean there are many other options as well.] server to any
+DigitalOcean there are many other options as well.] server to any
 user with a Google account.
 
 The hardware specifications for this free server are essentially equal
-to the resources of the $5/month server from Digital Ocean, but the
+to the resources of the $5/month server from DigitalOcean, but the
 bandwidth limitation is much lower[fn::1GB/month for a free GCP
 server, versus 1TB/month for a $5 server from DigitalOcean. On the
 other hand, Google only charges for outgoing traffic, while
@@ -173,7 +240,7 @@ than other providers. While the bandwidth limitations place some
 restrictions on the use of the server, it can still be useful for
 learning purposes or to provide simple backup services to a server on
 another network. Setting up a server using GCP is outside of the scope
-of this document, but is similar in many ways to Digital Ocean and
+of this document, but is similar in many ways to DigitalOcean and
 Google provides copious documentation.
 
 * Getting started

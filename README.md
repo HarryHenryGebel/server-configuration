@@ -1,58 +1,61 @@
 
 # Table of Contents
 
-1.  [About this document](#org34d41fb)
-2.  [Acquiring a domain name](#org829685f)
-    1.  [A brief introduction to the Domain Name Service](#orgd4b3815)
-        1.  [The components of a domain name](#org4bd54c7)
-        2.  [DNS servers](#org8550f9e)
-    2.  [Registering your own domain name](#orgb86034a)
-    3.  [Obtaining a free domain name.](#org9098e03)
-    4.  [Static and dynamic IP addresses](#orgbc1b1b0)
-3.  [Acquiring a Debian server](#org3becc05)
-    1.  [DigitalOcean](#org4d3b512)
-    2.  [Google Cloud Platform](#org70ab2f6)
-4.  [Getting started](#orgc25bd80)
-    1.  [Etckeeper](#org94ea0be)
-    2.  [fish](#org94fa025)
-    3.  [sudo](#orgc0c8a68)
-        1.  [The editor variable](#orgf226df2)
-    4.  [SSH server setup](#org90cb67a)
-    5.  [NTP server setup](#org6750833)
-        1.  [NTP service - sync time only](#org5f70335)
-        2.  [NTP service - join the pool of public NTP servers](#orgc551ab8)
-        3.  [Checking the status of the NTP service](#org377af7c)
-    6.  [Unattended upgrades setup](#orgd77fef7)
-5.  [Email server](#org5064a99)
-    1.  [Full email service](#orgeb1cab5)
-        1.  [Implement encrypted passwords in Dovecot / Postfix](#orgb33182b)
-    2.  [Local/forwarded email](#org20d7963)
+1.  [About this document](#org507775a)
+2.  [Acquiring a domain name](#orgf721997)
+    1.  [A brief introduction to the Domain Name Service](#orgb7edc18)
+        1.  [The components of a domain name](#org594e5ff)
+        2.  [DNS servers](#org23241dc)
+        3.  [DNS Records](#org489d79e)
+    2.  [Registering your own domain name](#org13a82d1)
+    3.  [Obtaining a free domain name.](#org2ab873a)
+    4.  [Static and dynamic IP addresses](#orgc45cdfe)
+3.  [Acquiring a Debian server](#orga373980)
+    1.  [DigitalOcean](#orgb1ae546)
+    2.  [Google Cloud Platform](#org44a4bbc)
+4.  [Getting started](#orgf5fb2bb)
+    1.  [Etckeeper](#org8f2f0a0)
+    2.  [fish](#orged95241)
+    3.  [sudo](#org30ee25b)
+        1.  [The editor variable](#org5dc6847)
+    4.  [SSH server setup](#orgc284a85)
+    5.  [NTP server setup](#org599bbe7)
+        1.  [NTP service - sync time only](#org61a2e07)
+        2.  [NTP service - join the pool of public NTP servers](#org34558f3)
+        3.  [Checking the status of the NTP service](#org10bbb8b)
+    6.  [Unattended upgrades setup](#org3739ba4)
+5.  [Email server](#orge534baf)
+    1.  [Full email service](#org03a4d98)
+        1.  [Implement encrypted passwords in Dovecot / Postfix](#org72072cc)
+    2.  [Local/forwarded email](#orgf2b2da3)
 
 
 
-<a id="org34d41fb"></a>
+<a id="org507775a"></a>
 
 # About this document
 
 This document is an opinionated description of how to set up a server
-from scratch, including the reasons for certain decisions. It is
-intended primarily for the author's own benefit, both as a writing
-exercise and as a reference, but is made available on a public
-repository in the hope that others may find it useful, or at least
-educational or exasperating. It assumes the user knows how to use ssh
-and has already generated a ssh key pair for logins<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, and that the user already possesses
-at least a rudimentary knowledge of working from the command line and
-has their local system set up with a Unix compatible shell if it does
-not come with one (Windows<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>). Patches<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup> or suggestions for improvement,
-especially regarding security or best practices, are welcome at all
-times, as are differing opinions.
+Debian 10 Buster server from scratch on DigitalOcean, including the
+reasons for certain decisions. It is intended primarily for the
+author's own benefit, both as a writing exercise and as a reference,
+but is made available on a public repository in the hope that others
+may find it useful, or at least educational or exasperating. It
+assumes the user knows how to use ssh and has already generated a ssh
+key pair for logins<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>,
+and that the user already possesses at least a rudimentary knowledge
+of working from the command line and has their local system set up
+with a Unix compatible shell if it does not come with one
+(Windows<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>). Patches<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup> or suggestions for improvement, especially regarding
+security or best practices, are welcome at all times, as are differing
+opinions.
 
 This document is released into the public domain where legally
 permissible, and all rights are permanently and irrevocably waived, to
 the extent permitted by law.
 
 
-<a id="org829685f"></a>
+<a id="orgf721997"></a>
 
 # Acquiring a domain name
 
@@ -81,12 +84,12 @@ concern if you choose not to host email from your domain, which in any
 case is probably not recommended for a free domain.
 
 
-<a id="orgd4b3815"></a>
+<a id="orgb7edc18"></a>
 
 ## A brief introduction to the Domain Name Service
 
 
-<a id="org4bd54c7"></a>
+<a id="org594e5ff"></a>
 
 ### The components of a domain name
 
@@ -117,14 +120,15 @@ address directly under the domain, or both.
 In domain name `central.gebel.tech`, `gebel.tech` is the domain and
 `central` is the name of a specific computer located in that domain.
 
-In the domain `www.bbc.co.uk`, bbc.co.uk is the domain and `www`
-refers to a specific computer in that domain. It is interesting
-because `www.bbc.co.uk` maps to numerous IP address, and every time it
-is looked up a different address is provided. This prevents any one of the
-domain owner's computers from being overloaded by traffic.
+In the domain `www.bbc.co.uk`, `bbc.co.uk` is the domain and `www`
+refers to a specific computer in that domain. It is an interesting
+example because `www.bbc.co.uk` maps to numerous IP address, and every
+time it is looked up a different address is provided. This prevents
+any one of the domain owner's computers from being overloaded by
+traffic.
 
 
-<a id="org8550f9e"></a>
+<a id="org23241dc"></a>
 
 ### DNS servers
 
@@ -173,32 +177,99 @@ this document, and not practical for the operator of a small network
 of just one or a handful of systems.
 
 
-<a id="orgb86034a"></a>
+<a id="org489d79e"></a>
+
+### DNS Records
+
+DNS records can be one of several standardized types. Each provides a
+different type of information. DNS records are all cached by the
+network of DNS servers, expect 24 - 48 hours for the address of a new
+DNS server to be updated throughout the internet. New records should
+normally be immediately available, but changes in records will take
+anywhere between 1,800 and 14,400 seconds to be reflected throughout
+the network. For this reason it is important to get the values correct
+when first setting up your records.
+
+The following is not a comprehensive list of record types, but
+includes all the types you will use in managing a simple network or
+single server.
+
+-   `A` and `AAAA` records provide the address associated with a domain
+    name. `A` records provide traditional IP4 addresses such as
+    `104.131.23.129`. `AAAA` records provide the newer IP6 addresses
+    such as `2604:a880:800:14::38:b000`. Most new servers will have both
+    an IP4 address and an IP6 address, and should have both an `A`
+    record and an `AAAA` record. There is normally no additional charge
+    for providing IP6 addresses, and when opt-in is required it
+    should always be requested because IP6 addresses because the supply
+    of IP4 address is running short. Already, every region except Africa
+    has run out of unassigned addresses and is resorting to reclaiming
+    addresses that were assigned but never or no longer used. In some
+    parts of Asia even those addresses have run out and IP6 addresses
+    are the only ones available. It is only a matter of time until IP4
+    addresses are simply unavailable, so it is best practice to begin
+    using IP6 addresses as soon as possible.
+-   `CNAME` records provide alternate names for an IP address. The
+    `CNAME` record points to another name rather than to an IP
+    address. This is useful, for example, to make a single web server
+    appear to serve pages for multiple domain names. `CNAME` records can
+    point to another `CNAME` record, but an `A` or `AAAA` record must be
+    at the end of the chain.
+-   `MX` records point to the mail server for a domain. For example, the
+    `MX` record for `gebel.tech` might be set to `central.gebel.tech`,
+    informing other mail servers that if they are trying to deliver mail
+    to, for example, `harry@gebel.tech`, they should deliver it to the
+    mail server running on `central.gebel.tech`.
+-   `TXT` records provide information and data about the domain. One
+    important type of information stored in `TXT` records are the public
+    keys and other information used to determine if an email really
+    originates from the address it claims to. Properly setting these
+    records is vital to making sure your mail server is trusted by other
+    mail servers on the network, and mails sent from it will not be
+    rejected or marked as spam. Equally importantly, these records
+    assure that spammers or other bad actors cannot falsely claim that
+    their emails originate from your domain.
+-   `PTR` records operate as reverse `A` and `AAAA` records. They allow
+    names to be looked up by their IP address instead of the other way
+    around. `PTR` records may only be managed by the owner of the IP
+    address assigned to your system, which will normally be your hosting
+    provider. Each hosting provider will have a different way of
+    specifying `PTR` records, which should be discoverable by googling
+    the name of your provider and the phrase "PTR record". Like `TXT`
+    records, `PTR` records are vital to safeguarding the Internet's mail
+    servers, they are also important to helping to identify the origin
+    of traffic in your server logs.
+-   `NS` records specify the name servers for a domain. Your hosting
+    provider will supply you with a list of their name servers, which
+    must then be provided to your domain registrar.
+
+
+<a id="org13a82d1"></a>
 
 ## Registering your own domain name
 
 
-<a id="org9098e03"></a>
+<a id="org2ab873a"></a>
 
 ## Obtaining a free domain name.
 
 
-<a id="orgbc1b1b0"></a>
+<a id="orgc45cdfe"></a>
 
 ## Static and dynamic IP addresses
 
 
-<a id="org3becc05"></a>
+<a id="orga373980"></a>
 
 # Acquiring a Debian server
 
 
-<a id="org4d3b512"></a>
+<a id="orgb1ae546"></a>
 
 ## DigitalOcean
 
 
-<a id="org70ab2f6"></a>
+<a id="org44a4bbc"></a>
 
 ## Google Cloud Platform
 
@@ -206,18 +277,18 @@ Google Compute Platform (GCP) provides a singe free Debian<sup><a id="fnr.8" cla
 user with a Google account.
 
 The hardware specifications for this free server are essentially equal
-to the resources of the $5/month server from Digital Ocean, but the
+to the resources of the $5/month server from DigitalOcean, but the
 bandwidth limitation is much lower<sup><a id="fnr.9" class="footref" href="#fn.9">9</a></sup>. Owing to the extreme speeds available from
 Google's network, bandwidth from Google is generally more expensive
 than other providers. While the bandwidth limitations place some
 restrictions on the use of the server, it can still be useful for
 learning purposes or to provide simple backup services to a server on
 another network. Setting up a server using GCP is outside of the scope
-of this document, but is similar in many ways to Digital Ocean and
+of this document, but is similar in many ways to DigitalOcean and
 Google provides copious documentation.
 
 
-<a id="orgc25bd80"></a>
+<a id="orgf5fb2bb"></a>
 
 # Getting started
 
@@ -225,7 +296,7 @@ These steps are necessary to get from a fresh, unconfigured server to one
 that can be securely logged into and left running.
 
 
-<a id="org94ea0be"></a>
+<a id="org8f2f0a0"></a>
 
 ## Etckeeper
 
@@ -233,27 +304,27 @@ Etckeeper is the first package to install, it will create a git
 repository that will control all changes made in the /etc directory.
 
 
-<a id="org94fa025"></a>
+<a id="orged95241"></a>
 
 ## fish
 
 
-<a id="orgc0c8a68"></a>
+<a id="org30ee25b"></a>
 
 ## sudo
 
 
-<a id="orgf226df2"></a>
+<a id="org5dc6847"></a>
 
 ### The editor variable
 
 
-<a id="org90cb67a"></a>
+<a id="orgc284a85"></a>
 
 ## SSH server setup
 
 
-<a id="org6750833"></a>
+<a id="org599bbe7"></a>
 
 ## NTP server setup
 
@@ -278,7 +349,7 @@ renders questions involving time calculations across the jump between
 standard time and daylight savings time moot.
 
 
-<a id="org5f70335"></a>
+<a id="org61a2e07"></a>
 
 ### NTP service - sync time only
 
@@ -292,7 +363,7 @@ source is lost the default configuration can usually correct for clock
 drift sufficiently until the source becomes available again.
 
 
-<a id="orgc551ab8"></a>
+<a id="org34558f3"></a>
 
 ### NTP service - join the pool of public NTP servers
 
@@ -329,12 +400,12 @@ Additional stratum proceed along the same plan up until
 stratum 14. Pool servers should be located at stratum 3 or 4.
 
 
-<a id="org377af7c"></a>
+<a id="org10bbb8b"></a>
 
 ### Checking the status of the NTP service
 
 
-<a id="orgd77fef7"></a>
+<a id="org3739ba4"></a>
 
 ## Unattended upgrades setup
 
@@ -342,12 +413,12 @@ You may wish to delay this until you have email set up, but in any
 case should not delay longer than necessary.
 
 
-<a id="org5064a99"></a>
+<a id="orge534baf"></a>
 
 # Email server
 
 
-<a id="orgeb1cab5"></a>
+<a id="org03a4d98"></a>
 
 ## Full email service
 
@@ -357,12 +428,12 @@ remote client such as Thunderbird or K-9 Mail, receiving emails sent
 from other domains, and providing IMAP services to remote clients.
 
 
-<a id="orgb33182b"></a>
+<a id="org72072cc"></a>
 
 ### Implement encrypted passwords in Dovecot / Postfix
 
 
-<a id="org20d7963"></a>
+<a id="orgf2b2da3"></a>
 
 ## Local/forwarded email
 
@@ -373,22 +444,21 @@ a local mailbox or forwarded to the server handling mail for the domain.
 
 # Footnotes
 
-<sup><a id="fn.1" href="#fnr.1">1</a></sup> Users of
-Github may have already set up a ssh key pair, and may safely use the
-same key pair they use to interact with their github repositories to
-log into any servers they create
+<sup><a id="fn.1" href="#fnr.1">1</a></sup> Users of Github may have already set up a ssh
+key pair, and may safely use the same key pair they use to interact
+with their github repositories to log into any servers they create
 
-<sup><a id="fn.2" href="#fnr.2">2</a></sup> Some examples of Windows projects that
-include Unix compatible shells are Git for Windows (Gitbash), the
-Windows Subsystem for Linux, Cygwin, and MinGW. There are other
-options as well, these are the ones the author is aware of. PuTTY is
-also available for Windows as an option to use ssh without having a
-Unix compatible shell installed on the local
-system.
+<sup><a id="fn.2" href="#fnr.2">2</a></sup> Some examples of Windows projects that include Unix
+compatible shells are Git for Windows (Gitbash), the Windows Subsystem
+for Linux, Cygwin, and MinGW. There are other options as well, these
+are the ones the author is aware of. PuTTY is also available for
+Windows as an option to use ssh without having a Unix compatible shell
+installed on the local system.
 
-<sup><a id="fn.3" href="#fnr.3">3</a></sup> Please submit any patches or pull requests
-against the source file `server-configuration.org`, not against
-generated files such as `README.md`
+<sup><a id="fn.3" href="#fnr.3">3</a></sup> Please submit any
+patches or pull requests against the source file
+`server-configuration.org`, not against generated files such as
+`README.md`
 
 <sup><a id="fn.4" href="#fnr.4">4</a></sup> Domain Name System
 
@@ -403,7 +473,7 @@ manage worldwide assignment of IP address and domain names
 <sup><a id="fn.7" href="#fnr.7">7</a></sup> Provided as a public service by Google
 
 <sup><a id="fn.8" href="#fnr.8">8</a></sup> Like
-Digital Ocean there are many other options as well.
+DigitalOcean there are many other options as well.
 
 <sup><a id="fn.9" href="#fnr.9">9</a></sup> 1GB/month for a free GCP
 server, versus 1TB/month for a $5 server from DigitalOcean. On the
