@@ -226,8 +226,10 @@ addresses. If your server has a domain name and a dynamic address you
 will have to look into methods of updating the domain name's address
 if the server's address changes after a reboot. This is outside the
 scope of this document. Be aware that the new address can take up to
-14,400 seconds to propagate through the network (but normally at most
-3,600 seconds from the last time you accessed the server).
+14,400 seconds to propagate through the DNS network (but normally at
+most 3,600 seconds from the last time someone accessed the server). Until
+it is updated in DNS you can still access your server by using it's IP
+address instead of it's name.
 
 * Acquiring a Debian server
 
