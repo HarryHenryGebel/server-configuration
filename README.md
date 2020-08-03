@@ -1,37 +1,37 @@
 
 # Table of Contents
 
-1.  [About this document](#org507775a)
-2.  [Acquiring a domain name](#orgf721997)
-    1.  [A brief introduction to the Domain Name Service](#orgb7edc18)
-        1.  [The components of a domain name](#org594e5ff)
-        2.  [DNS servers](#org23241dc)
-        3.  [DNS Records](#org489d79e)
-    2.  [Registering your own domain name](#org13a82d1)
-    3.  [Obtaining a free domain name.](#org2ab873a)
-    4.  [Static and dynamic IP addresses](#orgc45cdfe)
-3.  [Acquiring a Debian server](#orga373980)
-    1.  [DigitalOcean](#orgb1ae546)
-    2.  [Google Cloud Platform](#org44a4bbc)
-4.  [Getting started](#orgf5fb2bb)
-    1.  [Etckeeper](#org8f2f0a0)
-    2.  [fish](#orged95241)
-    3.  [sudo](#org30ee25b)
-        1.  [The editor variable](#org5dc6847)
-    4.  [SSH server setup](#orgc284a85)
-    5.  [NTP server setup](#org599bbe7)
-        1.  [NTP service - sync time only](#org61a2e07)
-        2.  [NTP service - join the pool of public NTP servers](#org34558f3)
-        3.  [Checking the status of the NTP service](#org10bbb8b)
-    6.  [Unattended upgrades setup](#org3739ba4)
-5.  [Email server](#orge534baf)
-    1.  [Full email service](#org03a4d98)
-        1.  [Implement encrypted passwords in Dovecot / Postfix](#org72072cc)
-    2.  [Local/forwarded email](#orgf2b2da3)
+1.  [About this document](#org312caa5)
+2.  [Acquiring a domain name](#org209d28f)
+    1.  [A brief introduction to the Domain Name Service](#orgda59267)
+        1.  [The components of a domain name](#org4c92d23)
+        2.  [DNS servers](#org81037cc)
+        3.  [DNS Records](#org5777190)
+    2.  [Registering your own domain name](#org889d75b)
+    3.  [Obtaining a free domain name.](#org8a9166c)
+    4.  [Static and dynamic IP addresses](#orgf62719d)
+3.  [Acquiring a Debian server](#org0b04d4d)
+    1.  [DigitalOcean](#org67ede52)
+    2.  [Google Cloud Platform](#org749f103)
+4.  [Getting started](#org8ba1001)
+    1.  [Etckeeper](#org96329bd)
+    2.  [fish](#org66f6ec3)
+    3.  [sudo](#org1fb467b)
+        1.  [The editor variable](#org8d430e2)
+    4.  [SSH server setup](#org1c886a1)
+    5.  [NTP server setup](#org5bab10e)
+        1.  [NTP service - sync time only](#org3b188cf)
+        2.  [NTP service - join the pool of public NTP servers](#org5f78e50)
+        3.  [Checking the status of the NTP service](#orgbd697a5)
+    6.  [Unattended upgrades setup](#org26537a5)
+5.  [Email server](#org251c5d7)
+    1.  [Full email service](#org7da233c)
+        1.  [Implement encrypted passwords in Dovecot / Postfix](#org929b992)
+    2.  [Local/forwarded email](#org24da0a1)
 
 
 
-<a id="org507775a"></a>
+<a id="org312caa5"></a>
 
 # About this document
 
@@ -55,7 +55,7 @@ permissible, and all rights are permanently and irrevocably waived, to
 the extent permitted by law.
 
 
-<a id="orgf721997"></a>
+<a id="org209d28f"></a>
 
 # Acquiring a domain name
 
@@ -66,12 +66,15 @@ was created to allow them to be looked up by name. DNS provides
 various types of records that allow you to look up an IP address from
 a domain name, find the services such as the mail server for a domain,
 redirect certain names to other names, lookup information about a
-domain, and lookup domain names from IP addresses. Purchasing,
-or more accurately leasing<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>, your own domain name gives you complete
-control of the domain on a yearly basis and, if you wish to host your
-own email server, will help greatly in making emails originating from
-your domain get the highest trust ratings, preventing emails you send
-from being marked as spam or rejected outright.
+domain, and lookup domain names from IP addresses. Purchasing, or more
+accurately leasing<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>, your own domain name gives you complete control of
+the domain on a yearly basis and, if you wish to host your own email
+server, will help greatly in making emails originating from your
+domain get the highest trust ratings, preventing emails you send from
+being marked as spam or rejected outright. The various registrars
+frequently offer discounts, and if you are a student some will provide
+a reduced or free domain for a single year. Check all of your options
+before paying for a domain.
 
 Another option is to obtain a free name from one of several
 sources. These names are subdomains to the domains the free domain
@@ -84,12 +87,12 @@ concern if you choose not to host email from your domain, which in any
 case is probably not recommended for a free domain.
 
 
-<a id="orgb7edc18"></a>
+<a id="orgda59267"></a>
 
 ## A brief introduction to the Domain Name Service
 
 
-<a id="org594e5ff"></a>
+<a id="org4c92d23"></a>
 
 ### The components of a domain name
 
@@ -128,7 +131,7 @@ any one of the domain owner's computers from being overloaded by
 traffic.
 
 
-<a id="org23241dc"></a>
+<a id="org81037cc"></a>
 
 ### DNS servers
 
@@ -177,7 +180,7 @@ this document, and not practical for the operator of a small network
 of just one or a handful of systems.
 
 
-<a id="org489d79e"></a>
+<a id="org5777190"></a>
 
 ### DNS Records
 
@@ -244,32 +247,32 @@ single server.
     must then be provided to your domain registrar.
 
 
-<a id="org13a82d1"></a>
+<a id="org889d75b"></a>
 
 ## Registering your own domain name
 
 
-<a id="org2ab873a"></a>
+<a id="org8a9166c"></a>
 
 ## Obtaining a free domain name.
 
 
-<a id="orgc45cdfe"></a>
+<a id="orgf62719d"></a>
 
 ## Static and dynamic IP addresses
 
 
-<a id="orga373980"></a>
+<a id="org0b04d4d"></a>
 
 # Acquiring a Debian server
 
 
-<a id="orgb1ae546"></a>
+<a id="org67ede52"></a>
 
 ## DigitalOcean
 
 
-<a id="org44a4bbc"></a>
+<a id="org749f103"></a>
 
 ## Google Cloud Platform
 
@@ -288,7 +291,7 @@ of this document, but is similar in many ways to DigitalOcean and
 Google provides copious documentation.
 
 
-<a id="orgf5fb2bb"></a>
+<a id="org8ba1001"></a>
 
 # Getting started
 
@@ -296,7 +299,7 @@ These steps are necessary to get from a fresh, unconfigured server to one
 that can be securely logged into and left running.
 
 
-<a id="org8f2f0a0"></a>
+<a id="org96329bd"></a>
 
 ## Etckeeper
 
@@ -304,27 +307,27 @@ Etckeeper is the first package to install, it will create a git
 repository that will control all changes made in the /etc directory.
 
 
-<a id="orged95241"></a>
+<a id="org66f6ec3"></a>
 
 ## fish
 
 
-<a id="org30ee25b"></a>
+<a id="org1fb467b"></a>
 
 ## sudo
 
 
-<a id="org5dc6847"></a>
+<a id="org8d430e2"></a>
 
 ### The editor variable
 
 
-<a id="orgc284a85"></a>
+<a id="org1c886a1"></a>
 
 ## SSH server setup
 
 
-<a id="org599bbe7"></a>
+<a id="org5bab10e"></a>
 
 ## NTP server setup
 
@@ -349,7 +352,7 @@ renders questions involving time calculations across the jump between
 standard time and daylight savings time moot.
 
 
-<a id="org61a2e07"></a>
+<a id="org3b188cf"></a>
 
 ### NTP service - sync time only
 
@@ -363,7 +366,7 @@ source is lost the default configuration can usually correct for clock
 drift sufficiently until the source becomes available again.
 
 
-<a id="org34558f3"></a>
+<a id="org5f78e50"></a>
 
 ### NTP service - join the pool of public NTP servers
 
@@ -400,12 +403,12 @@ Additional stratum proceed along the same plan up until
 stratum 14. Pool servers should be located at stratum 3 or 4.
 
 
-<a id="org10bbb8b"></a>
+<a id="orgbd697a5"></a>
 
 ### Checking the status of the NTP service
 
 
-<a id="org3739ba4"></a>
+<a id="org26537a5"></a>
 
 ## Unattended upgrades setup
 
@@ -413,12 +416,12 @@ You may wish to delay this until you have email set up, but in any
 case should not delay longer than necessary.
 
 
-<a id="orge534baf"></a>
+<a id="org251c5d7"></a>
 
 # Email server
 
 
-<a id="org03a4d98"></a>
+<a id="org7da233c"></a>
 
 ## Full email service
 
@@ -428,12 +431,12 @@ remote client such as Thunderbird or K-9 Mail, receiving emails sent
 from other domains, and providing IMAP services to remote clients.
 
 
-<a id="org72072cc"></a>
+<a id="org929b992"></a>
 
 ### Implement encrypted passwords in Dovecot / Postfix
 
 
-<a id="orgf2b2da3"></a>
+<a id="org24da0a1"></a>
 
 ## Local/forwarded email
 
@@ -462,8 +465,8 @@ patches or pull requests against the source file
 
 <sup><a id="fn.4" href="#fnr.4">4</a></sup> Domain Name System
 
-<sup><a id="fn.5" href="#fnr.5">5</a></sup> Domains are public resources, and can
-only be leased not owned
+<sup><a id="fn.5" href="#fnr.5">5</a></sup> Domains are public resources, and can only be
+leased not owned
 
 <sup><a id="fn.6" href="#fnr.6">6</a></sup> The Internet Assigned Numbers Authority, part of
 ICANN, the Internet Corporation for Assigned Names and Numbers, a
